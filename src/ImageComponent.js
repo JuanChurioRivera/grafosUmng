@@ -5,15 +5,16 @@ import './assets/style.css'; // Importar el CSS aquí
 
 const ImageComponent = () => {
   return (
+    
     <div className="image-container">
-      <h1>¿Se parecen?</h1> {/* Encabezado agregado */}
+    <h1>Se parecen?</h1>
       <div className="image-wrapper">
-        <img src={image1} alt="Imagen 1" />
-        <p>cambio</p>
+        <img src={image1} alt="Gráfico sin filtro" />
+        <p>sin</p>
       </div>
       <div className="image-wrapper">
-        <img src={image2} alt="Imagen 2" />
-        <p>Nombre de la imagen 2</p>
+        <img src={image2} alt="Gráfico con filtro Butterworth" />
+        <p>butterworth</p>
       </div>
     </div>
   );

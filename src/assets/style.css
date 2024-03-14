@@ -1,19 +1,28 @@
 .image-container {
     text-align: center;
-    margin-top: 20px;
+    padding: 20px;
   }
   
   .image-wrapper {
-    margin: 10px auto; /* centra los divs en la página con un margen arriba y abajo */
+    border: 2px solid #000; /* Borde del rectángulo */
+    margin-bottom: 20px; /* Espacio entre las imágenes */
+    display: inline-block; /* Para centrar el div si es necesario */
   }
   
   .image-wrapper img {
-    width: 80%; /* el ancho de la imagen */
-    height: auto; /* para mantener la proporción de la imagen */
-    background-color: #d3d3d3; /* color de fondo en caso de que la imagen tenga transparencias */
+    width: auto; /* Mantiene la proporción de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    max-width: 100%; /* Asegura que la imagen no sobrepase el ancho del contenedor */
+    display: block; /* Elimina espacio extra debajo de la imagen */
   }
   
   .image-wrapper p {
-    color: black;
+    margin: 0; /* Remueve el margen predeterminado del párrafo */
+    padding: 5px; /* Espacio dentro del borde del rectángulo */
+    background-color: #f8f8f8; /* Fondo ligeramente gris para la etiqueta */
+    border-top: 2px solid #000; /* Borde superior que separa la imagen de la etiqueta */
   }
-  
+
+  body{
+    background-color: D9D9D9;  /* Remueve el margen predeterminado del párrafo */
+  }
