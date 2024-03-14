@@ -10,7 +10,7 @@ const ImageComponent = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate('/respuesta'); // Ruta a la que quieres redirigir
-    }, 200);
+    }, 2000);
 
     return () => clearTimeout(timer); // Limpiar el timer si el componente se desmonta
   }, [navigate]); // Dependencias del efecto
