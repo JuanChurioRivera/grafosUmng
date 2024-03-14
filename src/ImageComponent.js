@@ -7,16 +7,18 @@ import './assets/style.css'; // Importar el CSS aquí
 const ImageComponent = () => {
   return (
     <div className="image-container">
-    dios
+    
     
       <div className="image-wrapper">
         <img src={image1} alt="Gráfico sin filtro" />
-        <p>shim</p>
+        
       </div>
       <div className="image-wrapper">
         <img src={image2} alt="Gráfico con filtro Butterworth" />
-        <p>butterworth</p>
+        
       </div>
+
+      <RedirectWithDelay to="/" delay={200} />
     </div>
   );
 }
