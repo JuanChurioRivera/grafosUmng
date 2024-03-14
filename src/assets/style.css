@@ -1,0 +1,19 @@
+.image-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .image-wrapper {
+    margin: 10px auto; /* centra los divs en la página con un margen arriba y abajo */
+  }
+  
+  .image-wrapper img {
+    width: 80%; /* el ancho de la imagen */
+    height: auto; /* para mantener la proporción de la imagen */
+    background-color: #d3d3d3; /* color de fondo en caso de que la imagen tenga transparencias */
+  }
+  
+  .image-wrapper p {
+    color: black;
+  }
+  
