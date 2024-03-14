@@ -5,15 +5,7 @@ import image2 from './assets/altos.png';
 import './assets/style.css';
 
 const ImageComponent = () => {
-  const navigate = useNavigate(); // Hook para navegar
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate('/respuesta'); // Ruta a la que quieres redirigir
-    }, 200);
-
-    return () => clearTimeout(timer); // Limpiar el timer si el componente se desmonta
-  }, [navigate]); // Dependencias del efecto
+  
 
   return (
     <div className="image-container">
