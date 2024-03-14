@@ -6,9 +6,8 @@ import './assets/style.css';
 import banda from './assets/banda.png';
 import altos from './assets/altos.png';
 
-const ImageComponent = ({ combination }) => {
-  const { nombreImagen } = useParams(); // Asume que tienes una ruta definida para capturar este parámetro
-  const navigate = useNavigate();
+const ImageComponent = () => {
+  
   
   
 
@@ -18,7 +17,7 @@ const ImageComponent = ({ combination }) => {
     <div className="image-container">
       <div className="image-wrapper">
         <img src={banda} alt="Gráfico sin filtro" />
-        <p>{combination}</p>
+        <p></p>
       </div>
       <div className="image-wrapper">
         <img src={altos} alt="Gráfico con filtro Butterworth" />

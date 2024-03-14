@@ -2,8 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './assets/estiloRespuesta.css'; // Asegúrate de que el camino al CSS sea correcto
 
-const Respuesta = ({ onDecisionMade }) => {
-  let navigate = useNavigate();
+const Respuesta = () => {
+  
 
   // Función para manejar el clic en los botones
   const handleClick = () => {
