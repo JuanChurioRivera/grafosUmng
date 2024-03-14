@@ -15,7 +15,7 @@ const Respuesta = ({ onDecisionMade }) => {
 
   return (
     <div>
-      <h2>¿Se parecen?</h2>
+      <h2>porfi</h2>
       {/* Añade el manejador de clics a cada botón */}
       <button className="button" onClick={handleClick}>Sí</button>
       <button className="button" onClick={handleClick}>No</button>
