@@ -18,7 +18,7 @@ const ImageComponent = () => {
         
       </div>
 
-      <RedirectWithDelay to="/" delay={200} />
+      
     </div>
   );
 }
