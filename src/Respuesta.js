@@ -1,13 +1,16 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate en lugar de useHistory
+import { useNavigate } from 'react-router-dom';
 import './assets/estiloRespuesta.css'; // Asegúrate de que el camino al CSS sea correcto
 
-const Respuesta = () => {
-  const navigate = useNavigate(); // Utiliza el hook useNavigate
+const Respuesta = ({ onDecisionMade }) => {
+  let navigate = useNavigate();
 
   // Función para manejar el clic en los botones
   const handleClick = () => {
-    navigate('/'); // Utiliza navigate para ir a la ruta de ImageComponent
+    if(onDecisionMade) {
+      onDecisionMade(); // Asegura que onDecisionMade se invoca para actualizar la combinación
+    }
+    navigate('/'); // Navega de vuelta a ImageComponent
   };
 
   return (

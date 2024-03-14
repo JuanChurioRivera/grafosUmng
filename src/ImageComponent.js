@@ -1,28 +1,27 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
-import image1 from './assets/banda.png';
-import image2 from './assets/altos.png';
+import { useNavigate, useParams } from 'react-router-dom';
 import './assets/style.css';
 
-const ImageComponent = () => {
-  const navigate = useNavigate(); // Hook para navegar
+// Importaciones estáticas para que Webpack pueda encontrar y empaquetar las imágenes
+import banda from './assets/banda.png';
+import altos from './assets/altos.png';
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate('/respuesta'); // Ruta a la que quieres redirigir
-    }, 2000);
+const ImageComponent = ({ combination }) => {
+  const { nombreImagen } = useParams(); // Asume que tienes una ruta definida para capturar este parámetro
+  const navigate = useNavigate();
+  
+  
 
-    return () => clearTimeout(timer); // Limpiar el timer si el componente se desmonta
-  }, [navigate]); // Dependencias del efecto
+
 
   return (
     <div className="image-container">
       <div className="image-wrapper">
-        <img src={image1} alt="Gráfico sin filtro" />
-        <p>shim</p>
+        <img src={banda} alt="Gráfico sin filtro" />
+        <p>{combination}</p>
       </div>
       <div className="image-wrapper">
-        <img src={image2} alt="Gráfico con filtro Butterworth" />
+        <img src={altos} alt="Gráfico con filtro Butterworth" />
         <p>butterworth</p>
       </div>
     </div>
