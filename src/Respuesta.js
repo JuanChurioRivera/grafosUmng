@@ -19,4 +19,4 @@ const Respuesta = () => {
   );
 }
 
-export default ImageComponent;
+export default Respuesta;
