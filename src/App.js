@@ -10,7 +10,6 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
-           
             <Route path="/" element={<ImageComponent/>} />
             <Route path="/respuesta" element={<Respuesta/>} />
           </Routes>
