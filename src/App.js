@@ -11,8 +11,8 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
-            <Route path="/" element={<CombinacionPalabras/>} />
-            <Route path="/image" element={<ImageComponent/>} />
+            <Route path="/com" element={<CombinacionPalabras/>} />
+            <Route path="/" element={<ImageComponent/>} />
             <Route path="/respuesta" element={<Respuesta/>} />
           </Routes>
         </div>
