@@ -1,17 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { CombinacionProvider } from './CombinacionContext'; // Importa el provider
+import { CombinacionProvider } from './CombinacionContext';
 import ImageComponent from './ImageComponent';
 import Respuesta from './Respuesta';
-import CombinacionPalabras from './CombinacionPalabras';
 
 function App() {
   return (
-    <CombinacionProvider> {/* Envuelve tu aplicación con el provider */}
+    <CombinacionProvider>
       <Router>
         <div className="App">
           <Routes>
-            <Route path="/com" element={<CombinacionPalabras/>} />
+           
             <Route path="/" element={<ImageComponent/>} />
             <Route path="/respuesta" element={<Respuesta/>} />
           </Routes>
