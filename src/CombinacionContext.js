@@ -10,6 +10,12 @@ export const CombinacionProvider = ({ children }) => {
   const palabras5 = ['CONTROL', 'CARDIOPATIA', 'BBB', 'DISRITMIA', 'INFARTO'];
   const palabras3 = ['SIGNAL', 'VG', 'HVG'];
 
+  const esCombinacionValida = (combinacion) => {
+    // Verifica si la combinación cumple con los requisitos
+    const [palabra1, palabra2, palabra3] = combinacion;
+    return palabras5.includes(palabra1) && palabras5.includes(palabra2) && palabras3.includes(palabra3);
+  };
+
   const generarNuevaCombinacion = () => {
     let nuevaCombinacion;
     let combinacionesPosibles = [];
@@ -17,15 +23,16 @@ export const CombinacionProvider = ({ children }) => {
     // Genera todas las combinaciones posibles
     palabras5.forEach((palabra1) => {
       palabras5.forEach((palabra2) => {
-        
-          palabras3.forEach((palabra3) => {
-            combinacionesPosibles.push([palabra1, palabra2, palabra3].sort());
-          });
-        
+        palabras3.forEach((palabra3) => {
+          let posibleCombinacion = [palabra1, palabra2, palabra3].sort();
+          if (esCombinacionValida(posibleCombinacion)) {
+            combinacionesPosibles.push(posibleCombinacion);
+          }
+        });
       });
     });
 
-    // Filtra las combinaciones que no han sido usadas aún
+    // Elimina las combinaciones ya utilizadas
     combinacionesPosibles = combinacionesPosibles.filter((combinacion) =>
       !historialCombinaciones.find((usada) => JSON.stringify(usada) === JSON.stringify(combinacion))
     );
@@ -43,7 +50,6 @@ export const CombinacionProvider = ({ children }) => {
     setHistorialCombinaciones((prev) => [...prev, nuevaCombinacion]);
   };
 
-  // Genera una combinación inicial
   useEffect(() => {
     generarNuevaCombinacion();
   }, []);
