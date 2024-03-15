@@ -1,49 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function CombinacionPalabras() {
   // Palabras disponibles para selección
   const palabras5 = ['CONTROL', 'CARDIOPATIA', 'BBB', 'DISRITMIA', 'INFARTO'];
   const palabras3 = ['SIGNAL', 'VG', 'HVG'];
 
-  // Estados para manejar las selecciones del usuario
-  const [seleccionPrimera, setSeleccionPrimera] = useState('');
-  const [seleccionSegunda, setSeleccionSegunda] = useState('');
-  const [seleccionTercera, setSeleccionTercera] = useState('');
+  // Estado para manejar la combinación generada
+  const [combinacion, setCombinacion] = useState([]);
 
-  // Función para manejar la selección de las palabras
-  const handleSeleccion = (evento, index) => {
-    if (index === 1) setSeleccionPrimera(evento.target.value);
-    if (index === 2) setSeleccionSegunda(evento.target.value);
-    if (index === 3) setSeleccionTercera(evento.target.value);
-  };
+  useEffect(() => {
+    // Función para generar la combinación aleatoria
+    const generarCombinacionAleatoria = () => {
+      // Seleccionar aleatoriamente dos palabras del primer grupo
+      const seleccion1 = palabras5[Math.floor(Math.random() * palabras5.length)];
+      const seleccion2 = palabras5[Math.floor(Math.random() * palabras5.length)];
 
-  // Función para generar la combinación
-  const generarCombinacion = () => {
-    alert(`Combinación generada: [${seleccionPrimera}, ${seleccionSegunda}, ${seleccionTercera}]`);
-  };
+      // Seleccionar aleatoriamente una palabra del segundo grupo
+      const seleccion3 = palabras3[Math.floor(Math.random() * palabras3.length)];
+
+      // Establecer la combinación en el estado
+      setCombinacion([seleccion1, seleccion2, seleccion3]);
+    };
+
+    generarCombinacionAleatoria();
+  }, []); // El arreglo vacío asegura que esto se ejecute solo una vez al cargar el componente
 
   return (
     <div>
-      <h2>Selecciona dos palabras y luego una tercera de otro grupo</h2>
-      <select value={seleccionPrimera} onChange={(e) => handleSeleccion(e, 1)}>
-        <option value="">Selecciona una palabra</option>
-        {palabras5.map((palabra, index) => (
-          <option key={index} value={palabra}>{palabra}</option>
-        ))}
-      </select>
-      <select value={seleccionSegunda} onChange={(e) => handleSeleccion(e, 2)}>
-        <option value="">Selecciona otra palabra</option>
-        {palabras5.map((palabra, index) => (
-          <option key={index} value={palabra}>{palabra}</option>
-        ))}
-      </select>
-      <select value={seleccionTercera} onChange={(e) => handleSeleccion(e, 3)}>
-        <option value="">Selecciona una palabra adicional</option>
-        {palabras3.map((palabra, index) => (
-          <option key={index} value={palabra}>{palabra}</option>
-        ))}
-      </select>
-      <button onClick={generarCombinacion}>Generar Combinación</button>
+      <h2>Combinación Aleatoria de Palabras</h2>
+      {combinacion.length > 0 && (
+        <p>Combinación generada: [{combinacion.join(', ')}]</p>
+      )}
     </div>
   );
 }
