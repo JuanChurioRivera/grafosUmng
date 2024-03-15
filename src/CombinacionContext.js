@@ -17,11 +17,11 @@ export const CombinacionProvider = ({ children }) => {
     // Genera todas las combinaciones posibles
     palabras5.forEach((palabra1) => {
       palabras5.forEach((palabra2) => {
-        if (palabra1 !== palabra2) {
+        
           palabras3.forEach((palabra3) => {
             combinacionesPosibles.push([palabra1, palabra2, palabra3].sort());
           });
-        }
+        
       });
     });
 
