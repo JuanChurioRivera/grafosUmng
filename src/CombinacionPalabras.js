@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useCombinacion } from './CombinacionContext'; // Asegúrate de tener este archivo y contexto definidos
 
 function CombinacionPalabras() {
   // Palabras disponibles para selección
   const palabras5 = ['CONTROL', 'CARDIOPATIA', 'BBB', 'DISRITMIA', 'INFARTO'];
   const palabras3 = ['SIGNAL', 'VG', 'HVG'];
 
-  // Estado para manejar la combinación generada
-  const [combinacion, setCombinacion] = useState([]);
+  // Utiliza el hook useCombinacion para establecer la combinación en el contexto
+  const { setCombinacion } = useCombinacion();
 
   useEffect(() => {
     // Función para generar la combinación aleatoria
@@ -18,21 +19,15 @@ function CombinacionPalabras() {
       // Seleccionar aleatoriamente una palabra del segundo grupo
       const seleccion3 = palabras3[Math.floor(Math.random() * palabras3.length)];
 
-      // Establecer la combinación en el estado
+      // Establecer la combinación en el contexto para que otros componentes puedan acceder a ella
       setCombinacion([seleccion1, seleccion2, seleccion3]);
     };
 
     generarCombinacionAleatoria();
-  }, []); // El arreglo vacío asegura que esto se ejecute solo una vez al cargar el componente
+  }, [setCombinacion]); // Agrega setCombinacion a la lista de dependencias para seguir las mejores prácticas
 
-  return (
-    <div>
-      <h2>Combinación Aleatoria de Palabras</h2>
-      {combinacion.length > 0 && (
-        <p>Combinación generada: [{combinacion.join(', ')}]</p>
-      )}
-    </div>
-  );
+  // Este componente no necesita mostrar nada por sí mismo ahora
+  return null;
 }
 
 export default CombinacionPalabras;
