@@ -6,22 +6,50 @@ export const useCombinacion = () => useContext(CombinacionContext);
 
 export const CombinacionProvider = ({ children }) => {
   const [combinacion, setCombinacion] = useState([]);
+  const [historialCombinaciones, setHistorialCombinaciones] = useState([]);
   const palabras5 = ['CONTROL', 'CARDIOPATIA', 'BBB', 'DISRITMIA', 'INFARTO'];
   const palabras3 = ['SIGNAL', 'VG', 'HVG'];
 
-  useEffect(() => {
-    const generarCombinacionAleatoria = () => {
-      const seleccion1 = palabras5[Math.floor(Math.random() * palabras5.length)];
-      const seleccion2 = palabras5[Math.floor(Math.random() * palabras5.length)];
-      const seleccion3 = palabras3[Math.floor(Math.random() * palabras3.length)];
-      setCombinacion([seleccion1, seleccion2, seleccion3]);
-    };
+  const generarNuevaCombinacion = () => {
+    let nuevaCombinacion;
+    let combinacionesPosibles = [];
 
-    generarCombinacionAleatoria();
-  }, []); // Asegura que la combinación se genere al cargar la app
+    // Genera todas las combinaciones posibles
+    palabras5.forEach((palabra1) => {
+      palabras5.forEach((palabra2) => {
+        if (palabra1 !== palabra2) {
+          palabras3.forEach((palabra3) => {
+            combinacionesPosibles.push([palabra1, palabra2, palabra3].sort());
+          });
+        }
+      });
+    });
+
+    // Filtra las combinaciones que no han sido usadas aún
+    combinacionesPosibles = combinacionesPosibles.filter((combinacion) =>
+      !historialCombinaciones.find((usada) => JSON.stringify(usada) === JSON.stringify(combinacion))
+    );
+
+    if (combinacionesPosibles.length === 0) {
+      alert("Todas las combinaciones posibles han sido generadas.");
+      return;
+    }
+
+    // Elige una combinación al azar de las posibles
+    nuevaCombinacion = combinacionesPosibles[Math.floor(Math.random() * combinacionesPosibles.length)];
+
+    // Actualiza el estado con la nueva combinación y agrega al historial
+    setCombinacion(nuevaCombinacion);
+    setHistorialCombinaciones((prev) => [...prev, nuevaCombinacion]);
+  };
+
+  // Genera una combinación inicial
+  useEffect(() => {
+    generarNuevaCombinacion();
+  }, []);
 
   return (
-    <CombinacionContext.Provider value={{ combinacion, setCombinacion }}>
+    <CombinacionContext.Provider value={{ combinacion, generarNuevaCombinacion }}>
       {children}
     </CombinacionContext.Provider>
   );

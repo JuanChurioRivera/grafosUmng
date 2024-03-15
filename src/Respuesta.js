@@ -1,19 +1,20 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate en lugar de useHistory
-import './assets/estiloRespuesta.css'; // Asegúrate de que el camino al CSS sea correcto
+import { useNavigate } from 'react-router-dom';
+import { useCombinacion } from './CombinacionContext'; // Asegúrate de importar correctamente
+import './assets/estiloRespuesta.css';
 
 const Respuesta = () => {
-  const navigate = useNavigate(); // Utiliza el hook useNavigate
+  const navigate = useNavigate();
+  const { generarNuevaCombinacion } = useCombinacion(); // Usa la nueva función para generar combinaciones
 
-  // Función para manejar el clic en los botones
   const handleClick = () => {
-    navigate('/'); // Utiliza navigate para ir a la ruta de ImageComponent
+    generarNuevaCombinacion(); // Genera una nueva combinación única al hacer clic
+    navigate('/'); // Navega de regreso para ver la nueva combinación
   };
 
   return (
     <div>
       <h2>¿Se parecen?</h2>
-      {/* Añade el manejador de clics a cada botón */}
       <button className="button" onClick={handleClick}>Sí</button>
       <button className="button" onClick={handleClick}>No</button>
     </div>
