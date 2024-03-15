@@ -1,30 +1,36 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
-import image1 from './assets/banda.png';
-import image2 from './assets/altos.png';
+import { useNavigate } from 'react-router-dom';
 import './assets/style.css';
 import { useCombinacion } from './CombinacionContext';
 
 const ImageComponent = () => {
-  const navigate = useNavigate(); // Hook para navegar
-  const { combinacion } = useCombinacion(); // Usa el hook para obtener la combinación
+  const navigate = useNavigate();
+  const { combinacion } = useCombinacion();
+  const [primeraPalabra, segundaPalabra, terceraPalabra] = combinacion;
+
+  // Construye los nombres de los archivos basado en las palabras de la combinación
+  let imagePath1, imagePath2;
+  if (primeraPalabra && segundaPalabra && terceraPalabra) {
+    imagePath1 = require(`./assets/${primeraPalabra}_${terceraPalabra}.jpg`);
+    imagePath2 = require(`./assets/${segundaPalabra}_${terceraPalabra}.jpg`);
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate('/respuesta'); // Ruta a la que quieres redirigir
+      navigate('/respuesta');
     }, 2000);
 
-    return () => clearTimeout(timer); // Limpiar el timer si el componente se desmonta
-  }, [navigate]); // Dependencias del efecto
+    return () => clearTimeout(timer);
+  }, [navigate]);
 
   return (
     <div className="image-container">
       <div className="image-wrapper">
-        <img src={image1} alt="Gráfico sin filtro" />
-        <p>Combinación: {combinacion.join(', ')}</p>
+        {imagePath1 && <img src={imagePath1.default} alt="Gráfico 1" />}
+        <p>Combinación: {primeraPalabra}, {segundaPalabra}, {terceraPalabra}</p>
       </div>
       <div className="image-wrapper">
-        <img src={image2} alt="Gráfico con filtro Butterworth" />
+        {imagePath2 && <img src={imagePath2.default} alt="Gráfico 2" />}
         <p>butterworth</p>
       </div>
     </div>
