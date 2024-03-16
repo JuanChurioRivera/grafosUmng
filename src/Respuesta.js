@@ -11,6 +11,7 @@ const Respuesta = () => {
   const { generarNuevaCombinacion } = useCombinacion(); // Usa la nueva función para generar combinaciones
   var ControlVar = 0;
   var Error = 1;
+  const [startTime, setStartTime] = useState(null);
   if(primeraPalabra == segundaPalabra){
     ControlVar = 1;
   }
