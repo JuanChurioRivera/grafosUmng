@@ -39,9 +39,8 @@ const Respuesta = () => {
         controlCondition: ControlVar,
         timePer: timeSpent // this should be a number
       };
-      const response = await axios.post('https://black-ground-03d7bc60f.5.azurestaticapps.net/insertRows', {
-        rowData
-      });
+      const response = await axios.post('https://black-ground-03d7bc60f.5.azurestaticapps.net/insertRows', rowData);
+
       
     } catch (error) {
       console.error('POST method fail', error);
@@ -63,9 +62,8 @@ const Respuesta = () => {
         controlCondition: ControlVar,
         timePer: timeSpent // this should be a number
       };
-      const response = await axios.post('https://black-ground-03d7bc60f.5.azurestaticapps.net/insertRows', {
-        rowData
-      });
+      const response = await axios.post('https://black-ground-03d7bc60f.5.azurestaticapps.net/insertRows', rowData);
+
       console.log(response.data);
     } catch (error) {
       console.error('POST method fail', error);
