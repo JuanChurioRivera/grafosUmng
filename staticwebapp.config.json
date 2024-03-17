@@ -3,6 +3,7 @@
   "globalHeaders": {
     
     "Access-Control-Allow-Methods": "POST, GET"
+    
   },
     "navigationFallback": {
       "rewrite": "/index.html",
