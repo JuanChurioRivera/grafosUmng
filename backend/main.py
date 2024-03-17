@@ -5,8 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://ambitious-plant-097b5610f.5.azurestaticapps.net"],  # Frontend origin
-    allow_credentials=True,
+    allow_origins= '*',  # 
     allow_methods=["GET", "POST"],  # Only allow methods you use
     allow_headers=["Authorization", "Content-Type"],  # Only allow headers you use
 )

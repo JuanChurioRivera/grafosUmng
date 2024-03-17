@@ -43,7 +43,10 @@ const Respuesta = () => {
         timePer: timeSpent // this should be a number
       };
       
-      const response = await axios.post('https://ambitious-plant-097b5610f.5.azurestaticapps.net/insertRows', rowData);
+      const response = await fetch('https://your-backend-url/insertRows', {
+        method: 'POST', // Specify the method
+        body: JSON.stringify(rowData) // Convert the JavaScript object to a string
+      });
       console.log(response.data);
 
       
@@ -69,8 +72,10 @@ const Respuesta = () => {
         controlCondition: ControlVar,
         timePer: timeSpent // this should be a number
       };
-      const response = await axios.post('https://ambitious-plant-097b5610f.5.azurestaticapps.net/insertRows', rowData);
-
+      const response = await fetch('https://your-backend-url/insertRows', {
+        method: 'POST', // Specify the method
+        body: JSON.stringify(rowData) // Convert the JavaScript object to a string
+      });
 
       console.log(response.data);
     } catch (error) {
