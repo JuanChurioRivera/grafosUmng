@@ -43,7 +43,7 @@ const Respuesta = () => {
         timePer: timeSpent // this should be a number
       };
       console.log("wtf")
-      const response = await axios.get('https://experimentdeploy.azurewebsites.net//insertRows', rowData);
+      const response = await axios.post('https://experimentdeploy.azurewebsites.net/insertRows', rowData);
       console.log(response.data);
 
       
@@ -69,7 +69,7 @@ const Respuesta = () => {
         controlCondition: ControlVar,
         timePer: timeSpent // this should be a number
       };
-      const response = await axios.get('https://experimentdeploy.azurewebsites.net//insertRows', rowData);
+      const response = await axios.post('https://experimentdeploy.azurewebsites.ne//insertRows', rowData);
 
 
       console.log(response.data);
