@@ -13,7 +13,7 @@ app.add_middleware(
 
 app.include_router(connect_api.router)
 
-@app.get("/")
+@app.post("/")
 
 
 
