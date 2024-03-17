@@ -43,8 +43,9 @@ const Respuesta = () => {
         timePer: timeSpent // this should be a number
       };
       console.log("wtf")
-      const response = await axios.post('https://experimentdeploy.azurewebsites.net/insertRows', rowData);
-      console.log(response.data);
+      //const response = await axios.post('https://experimentdeploy.azurewebsites.net/insertRows', rowData);
+      const response1 = await axios.get('https://experimentdeploy.azurewebsites.net/testdb');
+      console.log(response1);
 
       
     } catch (error) {
@@ -69,8 +70,9 @@ const Respuesta = () => {
         controlCondition: ControlVar,
         timePer: timeSpent // this should be a number
       };
-      const response = await axios.post('https://experimentdeploy.azurewebsites.ne//insertRows', rowData);
-
+      //const response = await axios.post('https://experimentdeploy.azurewebsites.net/insertRows', rowData);
+      const response1 = await axios.get('https://experimentdeploy.azurewebsites.net/testdb');
+      console.log(response1)
 
       console.log(response.data);
     } catch (error) {
