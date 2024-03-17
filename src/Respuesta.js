@@ -74,7 +74,7 @@ const Respuesta = () => {
       const response1 = await axios.get('https://experimentdeploy.azurewebsites.net/testdb');
       console.log(response1)
 
-      console.log(response.data);
+      //console.log(response.data);
     } catch (error) {
       console.error('POST method fail', error);
     }
