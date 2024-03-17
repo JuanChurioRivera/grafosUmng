@@ -24,6 +24,9 @@ const Respuesta = () => {
 
   const handleYesClick = async () => {
     
+
+    console.log("wtf")
+
     try {
       const timeSpent = new Date().getTime() - startTime;
 
@@ -39,7 +42,7 @@ const Respuesta = () => {
         controlCondition: ControlVar,
         timePer: timeSpent // this should be a number
       };
-      console.log("wtf")
+      
       const response = await axios.post('https://ambitious-plant-097b5610f.5.azurestaticapps.net/insertRows', rowData);
       console.log(response.data);
 
@@ -53,6 +56,8 @@ const Respuesta = () => {
 
   const handleNoClick = async () => {
     
+    console.log("wtf")
+
     try {
       const timeSpent = new Date().getTime() - startTime;
       const rowData = {
@@ -74,6 +79,7 @@ const Respuesta = () => {
     generarNuevaCombinacion();
     navigate('/');
   };
+
   return (
     <div>
       <h2>¿Se parecen?</h2>
