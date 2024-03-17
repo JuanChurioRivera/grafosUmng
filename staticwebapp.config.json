@@ -1,5 +1,24 @@
 {
 
+  "responseOverrides": {
+    "400": {
+      "rewrite": "/invalid-invitation-error.html"
+    },
+    "401": {
+      "statusCode": 302,
+      "redirect": "/login"
+    },
+    "403": {
+      "rewrite": "/custom-forbidden-page.html"
+    },
+    "404": {
+      "rewrite": "/custom-404.html"
+    },
+    "405": {
+      "rewrite": "termine mi sufrimiento"
+    }
+  }
+  ,
   "globalHeaders": {
     
     "Access-Control-Allow-Methods": "POST, GET, OPTIONS"
