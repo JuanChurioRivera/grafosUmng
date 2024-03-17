@@ -43,7 +43,7 @@ const Respuesta = () => {
         timePer: timeSpent // this should be a number
       };
       
-      const response = await fetch('https://your-backend-url/insertRows', {
+      const response = await fetch('https://ambitious-plant-097b5610f.5.azurestaticapps.net', {
         method: 'POST', // Specify the method
         body: JSON.stringify(rowData) // Convert the JavaScript object to a string
       });
