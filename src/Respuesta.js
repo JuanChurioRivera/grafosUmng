@@ -25,7 +25,7 @@ const Respuesta = () => {
   const handleYesClick = async () => {
     
 
-    console.log("wtf")
+    
 
     try {
       const timeSpent = new Date().getTime() - startTime;
@@ -42,7 +42,7 @@ const Respuesta = () => {
         controlCondition: ControlVar,
         timePer: timeSpent // this should be a number
       };
-      
+      console.log("wtf")
       const response = await axios.post('https://fastapiexperimento.azurewebsites.net/insertRows', rowData);
       console.log(response.data);
 
