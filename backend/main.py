@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,Request
 from azureSQL import connect_api
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -13,9 +13,11 @@ app.add_middleware(
 
 app.include_router(connect_api.router)
 
-@app.post("/")
+@app.api_route('/', methods=['GET', 'HEAD','POST'])
 
 
 
-async def root():# request asyncronic
+async def root(request:Request):# request asyncronic
+    if request.method == 'POST':
+        print('porfi')
     return "¡Hola Api!"
