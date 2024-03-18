@@ -69,7 +69,7 @@ const Respuesta = () => {
         controlCondition: ControlVar,
         timePer: timeSpent // this should be a number
       };
-      const response = await axios.post('https://experimentdeploy.azurewebsites.net/insertRows');
+      const response = await axios.post('experimentdeploy.azurewebsites.net/insertRows');
       
 
       //console.log(response.data);
