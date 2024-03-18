@@ -47,9 +47,7 @@ const Respuesta = () => {
         body: JSON.stringify(rowData)
       });
   
-      if (!response.ok) {
-        throw new Error('Network response was not ok ' + response.statusText);
-      }
+    
       const data = await response.json();
       console.log(data);
   
@@ -59,11 +57,40 @@ const Respuesta = () => {
     generarNuevaCombinacion();
     navigate('/');
   };
-  
+
   const handleNoClick = async () => {
-    // Similar to handleYesClick, replace axios with fetch here as well.
-  };
+    try {
+      const timeSpent = new Date().getTime() - startTime;
   
+      
+      const rowData = {
+        CONDITION_A: primeraPalabra,
+        CONDITION_B: segundaPalabra,
+        GRAPH: terceraPalabra,
+        timeTaken: timeSpent, // make sure this is a number
+        Error: Error, // this should be a number indicating if there was an error
+        controlCondition: ControlVar,
+        timePer: timeSpent // this should be a number
+      };
+      
+      const response = await fetch('https://experimentdeploy.azurewebsites.net/insertRows', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(rowData)
+      });
+  
+  
+      const data = await response.json();
+      console.log(data);
+  
+    } catch (error) {
+      console.error(':(', error);
+    }
+    generarNuevaCombinacion();
+    navigate('/');
+  };
 
   return (
     <div>
