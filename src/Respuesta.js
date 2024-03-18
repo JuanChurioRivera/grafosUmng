@@ -40,11 +40,12 @@ const Respuesta = () => {
       };
       
       const response = await fetch('https://experimentdeploy.azurewebsites.net/insertRows', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(rowData)
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Host': 'experimentdeploy.azurewebsites.net'
+          },
+          body: JSON.stringify(rowData)
       });
   
     
@@ -74,11 +75,12 @@ const Respuesta = () => {
       };
       
       const response = await fetch('https://experimentdeploy.azurewebsites.net/insertRows', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(rowData)
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Host': 'experimentdeploy.azurewebsites.net'
+          },
+          body: JSON.stringify(rowData)
       });
   
   
