@@ -5,6 +5,14 @@ import { useCombinacion } from './CombinacionContext'; // Asegúrate de importar
 import './assets/estiloRespuesta.css';
 
 const Respuesta = () => {
+
+  useEffect(() => {
+    const meta = document.createElement('meta');
+    meta.httpEquiv = 'Content-Security-Policy';
+    meta.content = 'upgrade-insecure-requests';
+    document.head.appendChild(meta);
+  }, []);
+
   const navigate = useNavigate();
   const { combinacion } = useCombinacion();
   const [primeraPalabra, segundaPalabra, terceraPalabra] = combinacion;
@@ -106,7 +114,6 @@ const Respuesta = () => {
   return (
 
     <div>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <h2>¿Se parecen?</h2>
     <button className="button" onClick={handleYesClick}>Sí</button>
     <button className="button" onClick={handleNoClick}>No</button>
