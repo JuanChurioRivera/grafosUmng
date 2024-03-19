@@ -25,39 +25,48 @@ const Respuesta = () => {
   const handleYesClick = async () => {
     try {
       const timeSpent = new Date().getTime() - startTime;
-  
-      if(ControlVar === 1) {
+    
+      if (ControlVar === 1) {
         Error = 0;
       }
       const rowData = {
         CONDITION_A: primeraPalabra,
         CONDITION_B: segundaPalabra,
         GRAPH: terceraPalabra,
-        timeTaken: timeSpent, // make sure this is a number
-        Error: Error, // this should be a number indicating if there was an error
+        timeTaken: timeSpent,
+        Error: Error,
         controlCondition: ControlVar,
-        timePer: timeSpent // this should be a number
+        timePer: timeSpent
       };
       
       const response = await fetch('https://experimentdeploy.azurewebsites.net/insertRows', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-              'Host': 'experimentdeploy.azurewebsites.net'
-          },
-          body: JSON.stringify(rowData)
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(rowData)
       });
   
-    
+      if (!response.ok) {
+        throw new TypeError('Network response was not ok.');
+      }
+      
+      // Check the response type before parsing
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new TypeError("Oops, we haven't got JSON!");
+      }
+      
       const data = await response.json();
       console.log(data);
-  
+    
     } catch (error) {
       console.error(':(', error);
     }
     generarNuevaCombinacion();
     navigate('/');
   };
+  
 
   const handleNoClick = async () => {
     try {
