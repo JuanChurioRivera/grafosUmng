@@ -1,9 +1,8 @@
-
+import axios  from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCombinacion } from './CombinacionContext'; // Asegúrate de importar correctamente
 import './assets/estiloRespuesta.css';
-import { Helmet } from 'react-helmet';
 
 const Respuesta = () => {
   const navigate = useNavigate();
@@ -105,17 +104,13 @@ const Respuesta = () => {
   };
 
   return (
-    <>
-      <Helmet>
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-      </Helmet>
-      <div>
-        <h2>¿Se parecen?</h2>
-        <button className="button" onClick={handleYesClick}>Sí</button>
-        <button className="button" onClick={handleNoClick}>No</button>
-      </div>
-    </>
-  );
-};
+
+    <div>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <h2>¿Se parecen?</h2>
+    <button className="button" onClick={handleYesClick}>Sí</button>
+    <button className="button" onClick={handleNoClick}>No</button>
+  </div>
+)};
 
 export default Respuesta;
