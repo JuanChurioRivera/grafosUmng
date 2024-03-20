@@ -16,13 +16,13 @@ const Respuesta = () => {
   
 
   const navigate = useNavigate();
-  const { combinacion } = useCombinacion();
+  const { combinacion, generarNuevaCombinacion, isAllCombinationsGenerated } = useCombinacion(); // Call hook once and destructure all needed values
   const [primeraPalabra, segundaPalabra, terceraPalabra] = combinacion;
-  const { generarNuevaCombinacion } = useCombinacion(); // Usa la nueva función para generar combinaciones
+
   var ControlVar = 0;
   var Error = 1;
   const [startTime, setStartTime] = useState(null);
-  const isAllCombinationsGenerated = combinacionContext.isAllCombinationsGenerated; // Access new state
+
   useEffect(() => {
     if (isAllCombinationsGenerated) {
       navigate('/End'); // Navigate to the new component when all combinations are generated
