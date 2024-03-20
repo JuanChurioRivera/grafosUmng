@@ -10,7 +10,7 @@
   }
   
   .image-wrapper img {
-    width: auto; /* Mantiene la proporción de la imagen */
+    width: 500px; /* Mantiene la proporción de la imagen */
     height: auto; /* Mantiene la proporción de la imagen */
     max-width: 100%; /* Asegura que la imagen no sobrepase el ancho del contenedor */
     display: block; /* Elimina espacio extra debajo de la imagen */
