@@ -72,7 +72,7 @@ const Respuesta = () => {
       console.error(':(', error);
     }
     generarNuevaCombinacion();
-    navigate('/');
+    navigate('/Image');
   };
   
 
@@ -108,7 +108,7 @@ const Respuesta = () => {
       console.error(':(', error);
     }
     generarNuevaCombinacion();
-    navigate('/');
+    navigate('/Image');
   };
 
   return (
