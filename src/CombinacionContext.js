@@ -39,6 +39,7 @@ export const CombinacionProvider = ({ children }) => {
     );
 
     if (combinacionesPosibles.length === 0) {
+      console.log("termina")
       setIsAllCombinationsGenerated(true);
       return;
     }
