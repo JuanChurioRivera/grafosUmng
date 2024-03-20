@@ -43,6 +43,7 @@ const Home = () => {
                     rows= "20"
 
                 />
+                <div style ="text-align: left">
                 <ul>
                     <li>
                         <input
@@ -72,6 +73,7 @@ const Home = () => {
                         <label htmlFor="item3">Solo hare esta prueba una unica vez</label>
                     </li>
                 </ul>
+                </div>
                 <button id="startButton" disabled={!allChecked} onClick={start}>
                     Empezar
                 </button>
