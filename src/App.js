@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CombinacionProvider } from './CombinacionContext';
 import ImageComponent from './ImageComponent';
 import Respuesta from './Respuesta';
+import Home from  './Home';
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
-            <Route path="/" element={<ImageComponent/>} />
+          <Route path="/" element={<Home/>} />
+            <Route path="/Image" element={<ImageComponent/>} />
             <Route path="/respuesta" element={<Respuesta/>} />
           </Routes>
         </div>
