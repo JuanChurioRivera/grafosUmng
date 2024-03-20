@@ -7,21 +7,24 @@ export const useCombinacion = () => useContext(CombinacionContext);
 export const CombinacionProvider = ({ children }) => {
   const [combinacion, setCombinacion] = useState([]);
   const [historialCombinaciones, setHistorialCombinaciones] = useState([]);
+  const [setsCompletados, setSetsCompletados] = useState(0); // Track completed sets
   const palabras5 = ['CONTROL', 'CARDIOPATIA', 'BBB', 'DISRITMIA', 'INFARTO'];
   const palabras3 = ['SIGNAL', 'VG', 'HVG'];
 
   const esCombinacionValida = (combinacion) => {
-    // Verifica si la combinación cumple con los requisitos
     const [palabra1, palabra2, palabra3] = combinacion;
     return palabras5.includes(palabra1) && palabras5.includes(palabra2) && palabras3.includes(palabra3);
   };
 
   const generarNuevaCombinacion = () => {
-    let nuevaCombinacion;
+    if (setsCompletados >= 10) { // Stop after 10 sets
+      alert("Se han completado 10 sets de combinaciones.");
+      return;
+    }
+
     let combinacionesPosibles = [];
-    
-    
-    // Genera todas las combinaciones posibles
+
+    // Generate all possible combinations
     palabras5.forEach((palabra1) => {
       palabras5.forEach((palabra2) => {
         palabras3.forEach((palabra3) => {
@@ -33,20 +36,26 @@ export const CombinacionProvider = ({ children }) => {
       });
     });
 
-    // Elimina las combinaciones ya utilizadas
+    // Filter out used combinations
     combinacionesPosibles = combinacionesPosibles.filter((combinacion) =>
       !historialCombinaciones.find((usada) => JSON.stringify(usada) === JSON.stringify(combinacion))
     );
 
     if (combinacionesPosibles.length === 0) {
-      alert("Todas las combinaciones posibles han sido generadas.");
+      setHistorialCombinaciones([]); // Reset historialCombinaciones
+      setSetsCompletados(setsCompletados + 1); // Increment setsCompletados
+      if (setsCompletados < 9) { // Check before regenerating
+        generarNuevaCombinacion(); // Regenerate combinations for the new set
+      } else {
+        alert("Todas las combinaciones de 10 sets han sido generadas.");
+      }
       return;
     }
 
-    // Elige una combinación al azar de las posibles
-    nuevaCombinacion = combinacionesPosibles[Math.floor(Math.random() * combinacionesPosibles.length)];
+    // Choose a random combination from the remaining
+    let nuevaCombinacion = combinacionesPosibles[Math.floor(Math.random() * combinacionesPosibles.length)];
 
-    // Actualiza el estado con la nueva combinación y agrega al historial
+    // Update the state with the new combination and add it to the history
     setCombinacion(nuevaCombinacion);
     setHistorialCombinaciones((prev) => [...prev, nuevaCombinacion]);
   };
