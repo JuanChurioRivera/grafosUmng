@@ -13,11 +13,7 @@ const Respuesta = () => {
     document.head.appendChild(meta);
   }, []);
 
-  useEffect(() => {
-    if (isAllCombinationsGenerated) {
-      navigate('/End'); // Navigate to the new component when all combinations are generated
-    }
-  }, [isAllCombinationsGenerated, navigate]);
+  
 
   const navigate = useNavigate();
   const { combinacion } = useCombinacion();
@@ -26,6 +22,13 @@ const Respuesta = () => {
   var ControlVar = 0;
   var Error = 1;
   const [startTime, setStartTime] = useState(null);
+  const isAllCombinationsGenerated = combinacionContext.isAllCombinationsGenerated; // Access new state
+  useEffect(() => {
+    if (isAllCombinationsGenerated) {
+      navigate('/End'); // Navigate to the new component when all combinations are generated
+    }
+  }, [isAllCombinationsGenerated, navigate]);
+
   if(primeraPalabra == segundaPalabra){
     ControlVar = 1;
   }
