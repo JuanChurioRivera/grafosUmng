@@ -18,7 +18,7 @@ const ImageComponent = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate('/respuesta');
-    }, 200);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [navigate]);
