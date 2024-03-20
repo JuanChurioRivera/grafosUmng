@@ -57,3 +57,7 @@ body {
     -webkit-appearance: slider-vertical;
     appearance: slider-vertical;
 }
+
+li{
+    list-style-type: none;
+}
