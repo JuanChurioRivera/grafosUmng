@@ -24,7 +24,7 @@ const Home = () => {
     // Function to handle the start action
     const start = () => {
         try {
-            navigate('/');
+            navigate('/Image');
         } catch (error) {
             console.log("Error al enviar la respuesta");
         }
@@ -47,7 +47,7 @@ const Home = () => {
                             checked={checkboxes.item1}
                             onChange={handleCheckboxChange}
                         />
-                        <label htmlFor="item1">Item 1</label>
+                        <label htmlFor="item1">Entiendo lo que dice arriba</label>
                     </li>
                     <li>
                         <input
@@ -56,7 +56,7 @@ const Home = () => {
                             checked={checkboxes.item2}
                             onChange={handleCheckboxChange}
                         />
-                        <label htmlFor="item2">Item 2</label>
+                        <label htmlFor="item2">Acepto que la información dada por las respuestas sea usado con fines investigativos</label>
                     </li>
                     <li>
                         <input
@@ -65,7 +65,7 @@ const Home = () => {
                             checked={checkboxes.item3}
                             onChange={handleCheckboxChange}
                         />
-                        <label htmlFor="item3">Item 3</label>
+                        <label htmlFor="item3">Solo hare esta prueba una unica vez</label>
                     </li>
                 </ul>
                 <button id="startButton" disabled={!allChecked} onClick={start}>
