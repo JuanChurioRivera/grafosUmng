@@ -13,6 +13,12 @@ const Respuesta = () => {
     document.head.appendChild(meta);
   }, []);
 
+  useEffect(() => {
+    if (isAllCombinationsGenerated) {
+      navigate('/End'); // Navigate to the new component when all combinations are generated
+    }
+  }, [isAllCombinationsGenerated, navigate]);
+
   const navigate = useNavigate();
   const { combinacion } = useCombinacion();
   const [primeraPalabra, segundaPalabra, terceraPalabra] = combinacion;
@@ -44,7 +50,7 @@ const Respuesta = () => {
         timeTaken: timeSpent,
         Error: Error,
         controlCondition: ControlVar,
-        timePer: timeSpent
+        timePer: 1000
       };
       
       const response = await fetch('https://experimentdeploy.azurewebsites.net/insertRows', {

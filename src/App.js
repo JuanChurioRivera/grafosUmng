@@ -4,6 +4,7 @@ import { CombinacionProvider } from './CombinacionContext';
 import ImageComponent from './ImageComponent';
 import Respuesta from './Respuesta';
 import Home from  './Home';
+import End from './End';
 
 function App() {
   return (
@@ -11,9 +12,10 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
-          <Route path="/" element={<Home/>} />
+            <Route path="/" element={<Home/>} />
             <Route path="/Image" element={<ImageComponent/>} />
             <Route path="/respuesta" element={<Respuesta/>} />
+            <Route path="/End" element={<End/>} />
           </Routes>
         </div>
       </Router>

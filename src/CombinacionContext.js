@@ -9,7 +9,8 @@ export const CombinacionProvider = ({ children }) => {
   const [historialCombinaciones, setHistorialCombinaciones] = useState([]);
   const palabras5 = ['CONTROL', 'CARDIOPATIA', 'BBB', 'DISRITMIA', 'INFARTO'];
   const palabras3 = ['SIGNAL', 'VG', 'HVG'];
-
+  const [isAllCombinationsGenerated, setIsAllCombinationsGenerated] = useState(false); // New state
+ 
   const esCombinacionValida = (combinacion) => {
     // Verifica si la combinación cumple con los requisitos
     const [palabra1, palabra2, palabra3] = combinacion;
@@ -38,7 +39,7 @@ export const CombinacionProvider = ({ children }) => {
     );
 
     if (combinacionesPosibles.length === 0) {
-      alert("Todas las combinaciones posibles han sido generadas.");
+      setIsAllCombinationsGenerated(true);
       return;
     }
 
