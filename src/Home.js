@@ -33,7 +33,7 @@ const Home = () => {
     // Render the component
     return (
         <div>
-            <h1>Experimento</h1>
+            <h1>EXPERIMENTO</h1>
             <div id="container">
                 <textarea
 
