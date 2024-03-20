@@ -27,9 +27,10 @@ const ImageComponent = () => {
     <div className="image-container">
       <div className="image-wrapper">
         {imagePath1 && <img src={imagePath1} alt="Gráfico 1" />}
-      </div>
+              </div>
       <div className="image-wrapper">
-        {imagePath2 && <img src={imagePath2} alt="Gráfico 2" />}
+
+
       </div>
     </div>
   );
