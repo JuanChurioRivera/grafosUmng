@@ -41,7 +41,7 @@ const Respuesta = () => {
         CONDITION_A: primeraPalabra,
         CONDITION_B: segundaPalabra,
         GRAPH: terceraPalabra,
-        timeTaken: timeSpent,
+        timeTaken: 1000,
         Error: Error,
         controlCondition: ControlVar,
         timePer: timeSpent
