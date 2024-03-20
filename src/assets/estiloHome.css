@@ -24,7 +24,8 @@ body {
     height: 100vh;
 }
 #container {
-    width: 200%;
+    width: 1000px;
+    height: 500px;
     max-width: 800px;
     text-align: center;
 }
