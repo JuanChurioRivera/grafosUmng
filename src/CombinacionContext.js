@@ -39,8 +39,9 @@ export const CombinacionProvider = ({ children }) => {
     );
 
     if (combinacionesPosibles.length === 0) {
-      console.log("termina")
+      
       setIsAllCombinationsGenerated(true);
+      console.log(isAllCombinationsGenerated)
       return;
     }
 
@@ -57,7 +58,7 @@ export const CombinacionProvider = ({ children }) => {
   }, []);
 
   return (
-    <CombinacionContext.Provider value={{ combinacion, generarNuevaCombinacion }}>
+    <CombinacionContext.Provider value={{ combinacion, generarNuevaCombinacion, isAllCombinationsGenerated }}>
       {children}
     </CombinacionContext.Provider>
   );
