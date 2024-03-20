@@ -17,6 +17,7 @@ const Respuesta = () => {
 
   const navigate = useNavigate();
   const { combinacion, generarNuevaCombinacion, isAllCombinationsGenerated } = useCombinacion(); // Call hook once and destructure all needed values
+  console.log(isAllCombinationsGenerated);
   const [primeraPalabra, segundaPalabra, terceraPalabra] = combinacion;
 
   var ControlVar = 0;
