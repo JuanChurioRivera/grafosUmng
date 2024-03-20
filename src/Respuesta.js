@@ -41,7 +41,7 @@ const Respuesta = () => {
         CONDITION_A: primeraPalabra,
         CONDITION_B: segundaPalabra,
         GRAPH: terceraPalabra,
-        timeTaken: 1000,
+        timeTaken: timeSpent,
         Error: Error,
         controlCondition: ControlVar,
         timePer: timeSpent
@@ -72,7 +72,7 @@ const Respuesta = () => {
       console.error(':(', error);
     }
     generarNuevaCombinacion();
-    navigate('/Image');
+    navigate('/');
   };
   
 
@@ -108,7 +108,7 @@ const Respuesta = () => {
       console.error(':(', error);
     }
     generarNuevaCombinacion();
-    navigate('/Image');
+    navigate('/');
   };
 
   return (
