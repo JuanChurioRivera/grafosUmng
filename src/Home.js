@@ -38,9 +38,9 @@ const Home = () => {
                 <textarea
 
                     id="texto"
-                    placeholder="Su tarea será determinar si los dos graficos que vera a continuación pertenecen al mismo paciente, este preparado porque su tiempo será limitado para ver los graficos"
+                    placeholder="Su tarea será determinar si los dos graficos que vera a continuación pertenecen al mismo paciente, este preparado porque su tiempo será limitado para ver los graficos."
                     cols = "40"
-                    rows= "40"
+                    rows= "20"
 
                 />
                 <ul>

@@ -19,7 +19,7 @@ export const CombinacionProvider = ({ children }) => {
   const generarNuevaCombinacion = () => {
     let nuevaCombinacion;
     let combinacionesPosibles = [];
-
+    var setCombinacion = 0;
     // Genera todas las combinaciones posibles
     palabras5.forEach((palabra1) => {
       palabras5.forEach((palabra2) => {
@@ -38,16 +38,16 @@ export const CombinacionProvider = ({ children }) => {
     );
 
     if (combinacionesPosibles.length === 0) {
-      alert("Todas las combinaciones posibles han sido generadas.");
+      setCombinacion+=1;
+      combinacionesPosibles.length = 0;
       return;
     }
 
-    // Elige una combinación al azar de las posibles
-    nuevaCombinacion = combinacionesPosibles[Math.floor(Math.random() * combinacionesPosibles.length)];
+    if(setCombinacion >= 10  && combinacionesPosibles.length === 0){
 
-    // Actualiza el estado con la nueva combinación y agrega al historial
-    setCombinacion(nuevaCombinacion);
-    setHistorialCombinaciones((prev) => [...prev, nuevaCombinacion]);
+    // Elige una combinación al azar de las posibles
+    alert("YA TERMINO PORFAVOR NO HAGA NADA MÁS")
+    }
   };
 
   useEffect(() => {
