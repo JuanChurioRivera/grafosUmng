@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
-
+    const navigate = useNavigate();
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const startButton = document.getElementById('startButton');
     checkboxes.forEach(checkbox => {
@@ -41,7 +41,7 @@ return(
                 <input type="checkbox" id="item3"></input>
                 <label for="item3">Item 3</label>
             </li>
-        onClick={handleNoClick}
+        
         <button id="startButton" disabled onClick={start} >Empezar</button>
     </div>
 </div>
