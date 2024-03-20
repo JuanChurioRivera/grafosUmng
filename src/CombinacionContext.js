@@ -19,8 +19,7 @@ export const CombinacionProvider = ({ children }) => {
   const generarNuevaCombinacion = () => {
     let nuevaCombinacion;
     let combinacionesPosibles = [];
-    
-    
+
     // Genera todas las combinaciones posibles
     palabras5.forEach((palabra1) => {
       palabras5.forEach((palabra2) => {
