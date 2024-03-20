@@ -43,7 +43,7 @@ const Home = () => {
                     rows= "20"
 
                 />
-                <div style ="text-align: left">
+                <div>
                 <ul>
                     <li>
                         <input
