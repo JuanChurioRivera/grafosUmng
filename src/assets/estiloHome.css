@@ -33,8 +33,8 @@ body {
   
 
 #texto {
-    width: 100%; /* Takes the full width of its parent container */
-    height: 150px; /* Adjust the height as needed */
+    width: 500px; /* Takes the full width of its parent container */
+    height: 500px; /* Adjust the height as needed */
     padding: 20px; /* Adds space inside the text area, making the content area larger */
     font-size: 16px; /* Adjust the font size as needed */
     box-sizing: border-box; /* Ensures padding does not add to the width */
