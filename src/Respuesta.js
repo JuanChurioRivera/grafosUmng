@@ -124,7 +124,7 @@ const Respuesta = () => {
   return (
 
     <div>
-    <h2>¿Se parecen?</h2>
+    <h2>¿Pertencen al mismo paciente?</h2>
     <button className="button" onClick={handleYesClick}>Sí</button>
     <button className="button" onClick={handleNoClick}>No</button>
   </div>
