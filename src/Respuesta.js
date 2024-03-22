@@ -90,7 +90,9 @@ const Respuesta = () => {
     try {
       const timeSpent = new Date().getTime() - startTime;
   
-      
+      if (ControlVar === 0) {
+        Error = 0;
+      }
       const rowData = {
         CONDITION_A: primeraPalabra,
         CONDITION_B: segundaPalabra,
