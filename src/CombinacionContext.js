@@ -5,6 +5,7 @@ const CombinacionContext = createContext();
 export const useCombinacion = () => useContext(CombinacionContext);
 
 export const CombinacionProvider = ({ children }) => {
+
   const [combinacion, setCombinacion] = useState([]);
   const [historialCombinaciones, setHistorialCombinaciones] = useState([]);
   const palabras5 = ['CONTROL', 'CARDIOPATIA', 'BBB', 'DISRITMIA', 'INFARTO'];
@@ -12,7 +13,7 @@ export const CombinacionProvider = ({ children }) => {
   const [isAllCombinationsGenerated, setIsAllCombinationsGenerated] = useState(false); // New state
  
   const esCombinacionValida = (combinacion) => {
-    // Verifica si la combinación cumple con los requisitos
+    
     const [palabra1, palabra2, palabra3] = combinacion;
     return palabras5.includes(palabra1) && palabras5.includes(palabra2) && palabras3.includes(palabra3);
   };
@@ -20,12 +21,20 @@ export const CombinacionProvider = ({ children }) => {
   const generarNuevaCombinacion = () => {
     let nuevaCombinacion;
     let combinacionesPosibles = [];
-
+    
+    if (combinacionesPosibles.length >= 75) {
+      
+      setIsAllCombinationsGenerated(true);
+      console.log(isAllCombinationsGenerated)
+      return;
+    }
+    do{
     // Genera todas las combinaciones posibles
     palabras5.forEach((palabra1) => {
       palabras5.forEach((palabra2) => {
         palabras3.forEach((palabra3) => {
-          let posibleCombinacion = [palabra1, palabra2, palabra3].sort();
+          let posibleCombinacion = [palabra1, palabra2, palabra3];
+          
           if (esCombinacionValida(posibleCombinacion)) {
             combinacionesPosibles.push(posibleCombinacion);
           }
@@ -33,22 +42,14 @@ export const CombinacionProvider = ({ children }) => {
       });
     });
 
-    // Elimina las combinaciones ya utilizadas
+    }while(esCombinacionValida(posibleCombinacion) )
+
     combinacionesPosibles = combinacionesPosibles.filter((combinacion) =>
       !historialCombinaciones.find((usada) => JSON.stringify(usada) === JSON.stringify(combinacion))
     );
 
-    if (combinacionesPosibles.length === 0) {
-      
-      setIsAllCombinationsGenerated(true);
-      console.log(isAllCombinationsGenerated)
-      return;
-    }
-
-    // Elige una combinación al azar de las posibles
     nuevaCombinacion = combinacionesPosibles[Math.floor(Math.random() * combinacionesPosibles.length)];
 
-    // Actualiza el estado con la nueva combinación y agrega al historial
     setCombinacion(nuevaCombinacion);
     setHistorialCombinaciones((prev) => [...prev, nuevaCombinacion]);
   };
