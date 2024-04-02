@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './assets/styleCarac.css';
 import { useCombinacion } from './CombinacionContext';
 
 const Caracterizacion = () => {
+    useEffect(() => {
+        const meta = document.createElement('meta');
+        meta.httpEquiv = 'Content-Security-Policy';
+        meta.content = 'upgrade-insecure-requests';
+        document.head.appendChild(meta);
+    }, []);
+
     const navigate = useNavigate();
     const [checkboxes, setCheckboxes] = useState({
         edad: '',
@@ -11,6 +18,7 @@ const Caracterizacion = () => {
         visual: ''
     });
 
+    const { setGender, setAge, setVisionImpediment } = useCombinacion();
     const allChecked = Object.values(checkboxes).every(value => value);
 
     const handleInputChange = (event) => {
@@ -23,33 +31,30 @@ const Caracterizacion = () => {
 
     const handleClick = async (event) => {
         event.preventDefault(); // Prevent default form submission behavior
-        
-        const rowData = {
-            age: checkboxes.edad,
-            gender: checkboxes.genero,
-            visualImpairment: checkboxes.visual
-        };
 
-        const { setID,setGender,setAge,setVisionImpediment } = useCombinacion();
-        
         try {
-            const response = await fetch('experimentdeploy.azurewebsites.net/insertUser'); // Replace with your actual FastAPI endpoint URL
-            const data = await response.json();
-            setID(data.latest_id);
-
+            const response = await fetch('https://experimentdeploy.azurewebsites.net/getLatestUser', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+             // Replace with your actual FastAPI endpoint URL
+            const data = await response.json(); // Parse JSON response
+            console.log(data);
         } catch (error) {
             console.error(error);
         }
 
-        setGender(checkboxes.genero);
-        setAge(checkboxes.edad);
-        setVisionImpediment(checkboxes.visualImpairment);
-
-        
-        
+        const rowData = {
+            ID: '',
+            age: checkboxes.edad,
+            gender: checkboxes.genero,
+            visualImpediment: checkboxes.visual
+        };
 
         try {
-            const response = await fetch('https://experimentdeploy.azurewebsites.net/insertUser', {
+            const insertResponse = await fetch('https://experimentdeploy.azurewebsites.net/insertUser', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -57,7 +62,10 @@ const Caracterizacion = () => {
                 body: JSON.stringify(rowData)
             });
 
-            if (response.ok) {
+            if (insertResponse.ok) {
+                setGender(checkboxes.genero);
+                setAge(checkboxes.edad);
+                setVisionImpediment(checkboxes.visualImpediment);
                 navigate('/Image');
             } else {
                 console.error('Failed to insert user');
