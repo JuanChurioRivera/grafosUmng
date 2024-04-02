@@ -18,7 +18,7 @@ const Caracterizacion = () => {
         visual: ''
     });
 
-    const { ID,setID,setGender, setAge, setVisionImpediment } = useCombinacion();
+    const { ID, setID, setGender, setAge, setVisionImpediment } = useCombinacion();
     const allChecked = Object.values(checkboxes).every(value => value);
 
     const handleInputChange = (event) => {
@@ -31,9 +31,9 @@ const Caracterizacion = () => {
 
     const handleClick = async (event) => {
         event.preventDefault(); // Prevent default form submission behavior
-        
+
         console.log("porfi");
-    
+
         try {
             const response = await fetch('https://experimentdeploy.azurewebsites.net/getLatestUser', {
                 method: 'GET',
@@ -41,25 +41,25 @@ const Caracterizacion = () => {
                     'Content-Type': 'application/json'
                 }
             });
-             // Replace with your actual FastAPI endpoint URL
+            // Replace with your actual FastAPI endpoint URL
             const data = await response.json(); // Parse JSON response
             setID(data)
-        
+
             console.log(data);
         } catch (error) {
             console.error(error);
         }
         console.log("termino");
-    
+
         const rowData = {
-            ID: ID+1,
+            ID: ID + 1,
             age: checkboxes.edad,
             gender: checkboxes.genero,
-            visualImpediment: checkboxes.visual
+            visual: checkboxes.visual
         };
 
         console.log(rowData);
-    
+
         try {
             const insertResponse = await fetch('https://experimentdeploy.azurewebsites.net/insertUser', {
                 method: 'POST',
@@ -68,11 +68,11 @@ const Caracterizacion = () => {
                 },
                 body: JSON.stringify(rowData)
             });
-    
+
             if (insertResponse.ok) {
-                setGender(checkboxes.genero);
-                setAge(checkboxes.edad);
-                setVisionImpediment(checkboxes.visualImpediment);
+                setGender(rowData.gender);
+                setAge(rowData.age);
+                setVisionImpediment(rowData.visual);
                 navigate('/Image');
             } else {
                 console.error('Failed to insert user');
@@ -81,7 +81,7 @@ const Caracterizacion = () => {
             console.error('Error:', error);
         }
     };
-    
+
     return (
         <div>
             <center><h1>REGISTRO</h1></center>
@@ -90,15 +90,15 @@ const Caracterizacion = () => {
                 <input type="text" id="edad" name="edad" placeholder="Escribe tu edad" onChange={handleInputChange} />
 
                 <label>Selecciona tu género:</label>
-                <input type="radio" id="genero_masculino" name="genero" value="Masculino" onChange={handleInputChange} /> Masculino
-                <input type="radio" id="genero_femenino" name="genero" value="Femenino" onChange={handleInputChange} /> Femenino
-                <input type="radio" id="genero_otro" name="genero" value="Otro" onChange={handleInputChange} /> Otro
+                <input type="radio" id="genero" name="genero" value="Masculino" onChange={handleInputChange} /> Masculino
+                <input type="radio" id="genero" name="genero" value="Femenino" onChange={handleInputChange} /> Femenino
+                <input type="radio" id="genero" name="genero" value="Otro" onChange={handleInputChange} /> Otro
 
                 <label>Padece de alguna enfermedad visual:</label>
-                <input type="radio" id="visual_si" name="visual" value="Si" onChange={handleInputChange} /> Si
-                <input type="radio" id="visual_no" name="visual" value="No" onChange={handleInputChange} /> No
+                <input type="radio" id="visual" name="visual" value="Si" onChange={handleInputChange} /> Si
+                <input type="radio" id="visual" name="visual" value="No" onChange={handleInputChange} /> No
 
-                <button type="submit"  onClick={handleClick}>Empezar</button>
+                <button type="submit" onClick={handleClick}>Empezar</button>
             </form>
         </div>
     );
