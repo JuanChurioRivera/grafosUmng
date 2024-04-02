@@ -33,6 +33,7 @@ const Caracterizacion = () => {
         event.preventDefault(); // Prevent default form submission behavior
 
         try {
+            console.log("empezo")
             const response = await fetch('https://experimentdeploy.azurewebsites.net/getLatestUser', {
                 method: 'GET',
                 headers: {
@@ -45,6 +46,7 @@ const Caracterizacion = () => {
         } catch (error) {
             console.error(error);
         }
+        console.log("termino")
 
         const rowData = {
             ID: '',
