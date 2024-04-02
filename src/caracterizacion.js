@@ -52,11 +52,13 @@ const Caracterizacion = () => {
         console.log("termino");
     
         const rowData = {
-            ID: ID,
+            ID: ID+1,
             age: checkboxes.edad,
             gender: checkboxes.genero,
             visualImpediment: checkboxes.visual
         };
+
+        console.log(rowData);
     
         try {
             const insertResponse = await fetch('https://experimentdeploy.azurewebsites.net/insertUser', {
