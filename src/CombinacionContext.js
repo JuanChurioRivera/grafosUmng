@@ -1,64 +1,61 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import Papa from 'papaparse';
 
 const CombinacionContext = createContext();
 
 export const useCombinacion = () => useContext(CombinacionContext);
 
 export const CombinacionProvider = ({ children }) => {
-  const [combinacion, setCombinacion] = useState([]);
-  const [historialCombinaciones, setHistorialCombinaciones] = useState([]);
-  const palabras5 = ['CONTROL', 'CARDIOPATIA', 'BBB', 'DISRITMIA', 'INFARTO'];
-  const palabras3 = ['SIGNAL', 'VG', 'HVG'];
-  const [isAllCombinationsGenerated, setIsAllCombinationsGenerated] = useState(false); // New state
- 
-  const esCombinacionValida = (combinacion) => {
-    // Verifica si la combinación cumple con los requisitos
-    const [palabra1, palabra2, palabra3] = combinacion;
-    return palabras5.includes(palabra1) && palabras5.includes(palabra2) && palabras3.includes(palabra3);
-  };
+
+  const [data, setData] = useState([]);
+  const [currentPosition, setCurrentPosition] = useState(0);
+
+  const [ID, setID] = useState('');
+  const [gender, setGender] = useState('');
+  const [age, setAge] = useState('');
+  const [visionImpediment, setVisionImpediment] = useState('');
+
+  const load = function(){
+    fetch( './public/assets/cambinaciones.csv' )
+        .then( response => response.text() )
+        .then( responseText => {
+            setText( responseText );
+  })
+};
 
   const generarNuevaCombinacion = () => {
-    let nuevaCombinacion;
-    let combinacionesPosibles = [];
+    // Código para generar una nueva combinación
+  };
 
-    // Genera todas las combinaciones posibles
-    palabras5.forEach((palabra1) => {
-      palabras5.forEach((palabra2) => {
-        palabras3.forEach((palabra3) => {
-          let posibleCombinacion = [palabra1, palabra2, palabra3];
-          if (esCombinacionValida(posibleCombinacion)) {
-            combinacionesPosibles.push(posibleCombinacion);
-          }
-        });
-      });
-    });
-
-    // Elimina las combinaciones ya utilizadas
-    combinacionesPosibles = combinacionesPosibles.filter((combinacion) =>
-      !historialCombinaciones.find((usada) => JSON.stringify(usada) === JSON.stringify(combinacion))
-    );
-
-    if (combinacionesPosibles.length === 0) {
-      
-      setIsAllCombinationsGenerated(true);
-      console.log(isAllCombinationsGenerated)
-      return;
+  const isAllCombinationsGenerated = () => {
+    if (currentPosition < parsedData.length) {
+      return false
+    }else{
+      return true
     }
-
-    // Elige una combinación al azar de las posibles
-    nuevaCombinacion = combinacionesPosibles[Math.floor(Math.random() * combinacionesPosibles.length)];
-
-    // Actualiza el estado con la nueva combinación y agrega al historial
-    setCombinacion(nuevaCombinacion);
-    setHistorialCombinaciones((prev) => [...prev, nuevaCombinacion]);
   };
 
   useEffect(() => {
-    generarNuevaCombinacion();
-  }, []);
+    // Lee el archivo CSV al inicializar el contexto
+    const fetchData = async () => {
+      const response = await fetch('/public/assets/cambinaciones.csv'); 
+      const reader = response.body.getReader();
+      const result = await reader.read();
+      const decoder = new TextDecoder('utf-8');
+      const csv = decoder.decode(result.value);
+      const parsedData = Papa.parse(csv).data;
+      if (currentPosition < parsedData.length) {
+        const currentRow = parsedData[currentPosition];
+        setData(currentRow);
+        // Incrementa la posición
+      }
+    };
+
+    fetchData();
+  }, [currentPosition]);
 
   return (
-    <CombinacionContext.Provider value={{ combinacion, generarNuevaCombinacion, isAllCombinationsGenerated }}>
+    <CombinacionContext.Provider value={{ currentRow,data,setCurrentPosition, ID, setID, gender, setGender, age, setAge, visionImpediment, setVisionImpediment, generarNuevaCombinacion, isAllCombinationsGenerated }}>
       {children}
     </CombinacionContext.Provider>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './assets/styleCarac.css';
+import { useCombinacion } from './CombinacionContext';
 
 const Caracterizacion = () => {
     const navigate = useNavigate();
@@ -28,6 +29,24 @@ const Caracterizacion = () => {
             gender: checkboxes.genero,
             visualImpairment: checkboxes.visual
         };
+
+        const { setID,setGender,setAge,setVisionImpediment } = useCombinacion();
+        
+        try {
+            const response = await fetch('experimentdeploy.azurewebsites.net/insertUser'); // Replace with your actual FastAPI endpoint URL
+            const data = await response.json();
+            setID(data.latest_id);
+
+        } catch (error) {
+            console.error(error);
+        }
+
+        setGender(checkboxes.genero);
+        setAge(checkboxes.edad);
+        setVisionImpediment(checkboxes.visualImpairment);
+
+        
+        
 
         try {
             const response = await fetch('https://experimentdeploy.azurewebsites.net/insertUser', {

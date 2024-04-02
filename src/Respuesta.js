@@ -16,9 +16,10 @@ const Respuesta = () => {
   
 
   const navigate = useNavigate();
-  const { combinacion, generarNuevaCombinacion, isAllCombinationsGenerated } = useCombinacion(); // Call hook once and destructure all needed values
-  console.log(isAllCombinationsGenerated);
-  const [primeraPalabra, segundaPalabra, terceraPalabra] = combinacion;
+  const { currentRow,setCurrentPosition,ID,age,gender,visionImpediment,data, generarNuevaCombinacion, isAllCombinationsGenerated } = useCombinacion(); // Call hook once and destructure all needed values
+
+  const [primeraPalabra, segundaPalabra, terceraPalabra] = currentRow;
+  console.log(currentRow)
 
   var ControlVar = 0;
   var Error = 1;
@@ -48,6 +49,10 @@ const Respuesta = () => {
         Error = 0;
       }
       const rowData = {
+        ID:ID,
+        gender:gender,
+        age:age,
+        visionImpediment:visionImpediment,
         CONDITION_A: primeraPalabra,
         CONDITION_B: segundaPalabra,
         GRAPH: terceraPalabra,
@@ -81,7 +86,7 @@ const Respuesta = () => {
     } catch (error) {
       console.error(':(', error);
     }
-    generarNuevaCombinacion();
+    setCurrentPosition(currentPosition + 1);
     navigate('/Image');
   };
   
@@ -119,7 +124,7 @@ const Respuesta = () => {
     } catch (error) {
       console.error(':(', error);
     }
-    generarNuevaCombinacion();
+    setCurrentPosition(currentPosition + 1);
     navigate('/Image');
   };
 
