@@ -5,48 +5,21 @@ import { useCombinacion } from './CombinacionContext';
 
 const Caracterizacion = () => {
     const navigate = useNavigate();
-    const [checkboxes, setCheckboxes] = useState({
-        edad: '',
-        genero: '',
-        visual: ''
-    });
-
-    const allChecked = Object.values(checkboxes).every(value => value);
-
-    const handleInputChange = (event) => {
-        const { id, value } = event.target;
-        setCheckboxes({
-            ...checkboxes,
-            [id]: value
-        });
-    };
+    const { setID, setGender, setAge, setVisionImpediment } = useCombinacion();
+    const [edad, setEdad] = useState('');
+    const [genero, setGenero] = useState('');
+    const [visual, setVisual] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleClick = async (event) => {
         event.preventDefault(); // Prevent default form submission behavior
-        
+        setLoading(true);
+
         const rowData = {
-            age: checkboxes.edad,
-            gender: checkboxes.genero,
-            visualImpairment: checkboxes.visual
+            age: edad,
+            gender: genero,
+            visualImpairment: visual
         };
-
-        const { setID,setGender,setAge,setVisionImpediment } = useCombinacion();
-        
-        try {
-            const response = await fetch('experimentdeploy.azurewebsites.net/insertUser'); // Replace with your actual FastAPI endpoint URL
-            const data = await response.json();
-            setID(data.latest_id);
-
-        } catch (error) {
-            console.error(error);
-        }
-
-        setGender(checkboxes.genero);
-        setAge(checkboxes.edad);
-        setVisionImpediment(checkboxes.visualImpairment);
-
-        
-        
 
         try {
             const response = await fetch('https://experimentdeploy.azurewebsites.net/insertUser', {
@@ -58,12 +31,19 @@ const Caracterizacion = () => {
             });
 
             if (response.ok) {
+                const data = await response.json();
+                setID(data.latest_id);
+                setGender(genero);
+                setAge(edad);
+                setVisionImpediment(visual);
                 navigate('/Image');
             } else {
                 console.error('Failed to insert user');
             }
         } catch (error) {
             console.error('Error:', error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -72,18 +52,18 @@ const Caracterizacion = () => {
             <center><h1>REGISTRO</h1></center>
             <form id="formulario">
                 <label htmlFor="edad">Ingrese su edad:</label>
-                <input type="text" id="edad" name="edad" placeholder="Escribe tu edad" onChange={handleInputChange} />
+                <input type="text" id="edad" name="edad" placeholder="Escribe tu edad" value={edad} onChange={(e) => setEdad(e.target.value)} />
 
                 <label>Selecciona tu género:</label>
-                <input type="radio" id="genero_masculino" name="genero" value="Masculino" onChange={handleInputChange} /> Masculino
-                <input type="radio" id="genero_femenino" name="genero" value="Femenino" onChange={handleInputChange} /> Femenino
-                <input type="radio" id="genero_otro" name="genero" value="Otro" onChange={handleInputChange} /> Otro
+                <input type="radio" id="genero_masculino" name="genero" value="Masculino" checked={genero === 'Masculino'} onChange={(e) => setGenero(e.target.value)} /> Masculino
+                <input type="radio" id="genero_femenino" name="genero" value="Femenino" checked={genero === 'Femenino'} onChange={(e) => setGenero(e.target.value)} /> Femenino
+                <input type="radio" id="genero_otro" name="genero" value="Otro" checked={genero === 'Otro'} onChange={(e) => setGenero(e.target.value)} /> Otro
 
                 <label>Padece de alguna enfermedad visual:</label>
-                <input type="radio" id="visual_si" name="visual" value="Si" onChange={handleInputChange} /> Si
-                <input type="radio" id="visual_no" name="visual" value="No" onChange={handleInputChange} /> No
+                <input type="radio" id="visual_si" name="visual" value="Si" checked={visual === 'Si'} onChange={(e) => setVisual(e.target.value)} /> Si
+                <input type="radio" id="visual_no" name="visual" value="No" checked={visual === 'No'} onChange={(e) => setVisual(e.target.value)} /> No
 
-                <button type="submit" disabled={!allChecked} onClick={handleClick}>Empezar</button>
+                <button type="submit" disabled={loading || !(edad && genero && visual)} onClick={handleClick}>{loading ? 'Cargando...' : 'Empezar'}</button>
             </form>
         </div>
     );
