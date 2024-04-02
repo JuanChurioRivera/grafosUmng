@@ -43,24 +43,17 @@ const Caracterizacion = () => {
             });
             // Replace with your actual FastAPI endpoint URL
             const data = await response.json(); // Parse JSON response
-            setID(data)
-
-            console.log(data);
-        } catch (error) {
-            console.error(error);
-        }
-        console.log("termino");
-
-        const rowData = {
-            ID: ID,
-            age: checkboxes.edad,
-            gender: checkboxes.genero,
-            visual: checkboxes.visual
-        };
-
-        console.log(rowData);
-
-        try {
+            setID(data);
+        
+            const rowData = {
+                ID: data + 1, // Update rowData with the new ID value
+                age: checkboxes.edad,
+                gender: checkboxes.genero,
+                visual: checkboxes.visual
+            };
+        
+            console.log(rowData);
+        
             const insertResponse = await fetch('https://experimentdeploy.azurewebsites.net/insertUser', {
                 method: 'POST',
                 headers: {
@@ -68,7 +61,7 @@ const Caracterizacion = () => {
                 },
                 body: JSON.stringify(rowData)
             });
-
+        
             if (insertResponse.ok) {
                 setGender(rowData.gender);
                 setAge(rowData.age);
