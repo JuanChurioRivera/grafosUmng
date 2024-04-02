@@ -9,18 +9,13 @@ export const CombinacionProvider = ({ children }) => {
 
   const [data, setData] = useState([]);
   const [currentPosition, setCurrentPosition] = useState(0);
-
+  const currentRow =  [];
   const [ID, setID] = useState('');
   const [gender, setGender] = useState('');
   const [age, setAge] = useState('');
   const [visionImpediment, setVisionImpediment] = useState('');
 
-  const load = function(){
-    fetch( './public/assets/cambinaciones.csv' )
-        .then( response => response.text() )
-        .then( responseText => {
-            setText( responseText );
-  })
+  
 };
 
   const generarNuevaCombinacion = () => {
@@ -47,7 +42,6 @@ export const CombinacionProvider = ({ children }) => {
       if (currentPosition < parsedData.length) {
         const currentRow = parsedData[currentPosition];
         setData(currentRow);
-        // Incrementa la posición
       }
     };
 
@@ -55,7 +49,7 @@ export const CombinacionProvider = ({ children }) => {
   }, [currentPosition]);
 
   return (
-    <CombinacionContext.Provider value={{ currentRow,data,setCurrentPosition, ID, setID, gender, setGender, age, setAge, visionImpediment, setVisionImpediment, generarNuevaCombinacion, isAllCombinationsGenerated }}>
+    <CombinacionContext.Provider value={{ data,setCurrentPosition, ID, setID, gender, setGender, age, setAge, visionImpediment, setVisionImpediment, generarNuevaCombinacion, isAllCombinationsGenerated }}>
       {children}
     </CombinacionContext.Provider>
   );

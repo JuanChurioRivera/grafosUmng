@@ -16,10 +16,10 @@ const Respuesta = () => {
   
 
   const navigate = useNavigate();
-  const { currentRow,setCurrentPosition,ID,age,gender,visionImpediment,data, generarNuevaCombinacion, isAllCombinationsGenerated } = useCombinacion(); // Call hook once and destructure all needed values
+  const { setCurrentPosition,ID,age,gender,visionImpediment,data, generarNuevaCombinacion, isAllCombinationsGenerated } = useCombinacion(); // Call hook once and destructure all needed values
 
-  const [primeraPalabra, segundaPalabra, terceraPalabra] = currentRow;
-  console.log(currentRow)
+  const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
+  console.log(data)
 
   var ControlVar = 0;
   var Error = 1;
