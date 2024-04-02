@@ -52,7 +52,7 @@ const Caracterizacion = () => {
         console.log("termino");
 
         const rowData = {
-            ID: ID + 1,
+            ID: 12,
             age: checkboxes.edad,
             gender: checkboxes.genero,
             visual: checkboxes.visual
