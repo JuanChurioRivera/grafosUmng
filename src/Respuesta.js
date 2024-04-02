@@ -140,7 +140,7 @@ const Respuesta = () => {
 
   return (
     <div>
-      <h2>¿Pertenecen al mismo paciente?</h2>
+      <h2>¿Son iguales?</h2>
       <button className="button" onClick={handleYesClick}>Sí</button>
       <button className="button" onClick={handleNoClick}>No</button>
     </div>

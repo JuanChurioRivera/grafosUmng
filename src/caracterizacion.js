@@ -4,6 +4,15 @@ import './assets/styleCarac.css';
 import { useCombinacion } from './CombinacionContext';
 
 const Caracterizacion = () => {
+
+    useEffect(() => {
+        const meta = document.createElement('meta');
+        meta.httpEquiv = 'Content-Security-Policy';
+        meta.content = 'upgrade-insecure-requests';
+        document.head.appendChild(meta);
+      }, []);
+
+
     const navigate = useNavigate();
     const { setID, setGender, setAge, setVisionImpediment } = useCombinacion();
     const [edad, setEdad] = useState('');
