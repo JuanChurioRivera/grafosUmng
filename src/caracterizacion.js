@@ -30,10 +30,10 @@ const Caracterizacion = () => {
     };
 
     const handleClick = async (event) => {
-        event.preventDefault(); // Prevent default form submission behavior
+        console.log("porfi")
 
         try {
-            console.log("empezo")
+            
             const response = await fetch('https://experimentdeploy.azurewebsites.net/getLatestUser', {
                 method: 'GET',
                 headers: {
