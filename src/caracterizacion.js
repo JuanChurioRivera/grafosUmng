@@ -18,7 +18,7 @@ const Caracterizacion = () => {
         visual: ''
     });
 
-    const { setGender, setAge, setVisionImpediment } = useCombinacion();
+    const { ID,setID,setGender, setAge, setVisionImpediment } = useCombinacion();
     const allChecked = Object.values(checkboxes).every(value => value);
 
     const handleInputChange = (event) => {
@@ -42,6 +42,8 @@ const Caracterizacion = () => {
             });
              // Replace with your actual FastAPI endpoint URL
             const data = await response.json(); // Parse JSON response
+            setID(data)
+        
             console.log(data);
         } catch (error) {
             console.error(error);
@@ -49,7 +51,7 @@ const Caracterizacion = () => {
         console.log("termino")
 
         const rowData = {
-            ID: '',
+            ID: ID,
             age: checkboxes.edad,
             gender: checkboxes.genero,
             visualImpediment: checkboxes.visual
