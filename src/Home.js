@@ -24,7 +24,7 @@ const Home = () => {
     // Function to handle the start action
     const start = () => {
         try {
-            navigate('/Image');
+            navigate('/Caracterizacion');
         } catch (error) {
             console.log("Error al enviar la respuesta");
         }
@@ -75,7 +75,7 @@ const Home = () => {
                 </ul>
                 </div>
                 <button id="startButton" disabled={!allChecked} onClick={start}>
-                    Empezar
+                    Seguir
                 </button>
             </div>
         </div>
