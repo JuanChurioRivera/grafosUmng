@@ -96,7 +96,7 @@ const Caracterizacion = () => {
                 <input type="radio" id="visual_si" name="visual" value="Si" onChange={handleInputChange} /> Si
                 <input type="radio" id="visual_no" name="visual" value="No" onChange={handleInputChange} /> No
 
-                <button type="submit" disabled={!allChecked} onClick={handleClick}>Empezar</button>
+                <button type="submit"  onClick={handleClick}>Empezar</button>
             </form>
         </div>
     );
