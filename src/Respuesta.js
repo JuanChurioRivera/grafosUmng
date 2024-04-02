@@ -1,7 +1,7 @@
-import axios  from 'axios';
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCombinacion } from './CombinacionContext'; // Asegúrate de importar correctamente
+import { useCombinacion } from './CombinacionContext'; // Make sure to import correctly
 import './assets/estiloRespuesta.css';
 
 const Respuesta = () => {
@@ -13,10 +13,18 @@ const Respuesta = () => {
     document.head.appendChild(meta);
   }, []);
 
-  
-
   const navigate = useNavigate();
-  const { setCurrentPosition,ID,age,gender,visionImpediment,data, generarNuevaCombinacion, isAllCombinationsGenerated } = useCombinacion(); // Call hook once and destructure all needed values
+  const {
+    setCurrentPosition,
+    ID,
+    age,
+    gender,
+    visionImpediment,
+    data,
+    generarNuevaCombinacion,
+    isAllCombinationsGenerated,
+    currentPosition // Destructure currentPosition from the context
+  } = useCombinacion(); // Call hook once and destructure all needed values
 
   const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
   console.log(data)
@@ -31,7 +39,7 @@ const Respuesta = () => {
     }
   }, [isAllCombinationsGenerated, navigate]);
 
-  if(primeraPalabra == segundaPalabra){
+  if (primeraPalabra === segundaPalabra) {
     ControlVar = 1;
   }
 
@@ -39,20 +47,18 @@ const Respuesta = () => {
     setStartTime(new Date().getTime()); // Set the start time to the current time
   }, []);
 
-
-
   const handleYesClick = async () => {
     try {
       const timeSpent = new Date().getTime() - startTime;
-    
+
       if (ControlVar === 1) {
         Error = 0;
       }
       const rowData = {
-        ID:ID,
-        gender:gender,
-        age:age,
-        visionImpediment:visionImpediment,
+        ID: ID,
+        gender: gender,
+        age: age,
+        visionImpediment: visionImpediment,
         CONDITION_A: primeraPalabra,
         CONDITION_B: segundaPalabra,
         GRAPH: terceraPalabra,
@@ -61,7 +67,7 @@ const Respuesta = () => {
         controlCondition: ControlVar,
         timePer: 1000
       };
-      
+
       const response = await fetch('https://experimentdeploy.azurewebsites.net/insertRows', {
         method: 'POST',
         headers: {
@@ -69,58 +75,62 @@ const Respuesta = () => {
         },
         body: JSON.stringify(rowData)
       });
-  
+
       if (!response.ok) {
         throw new TypeError('Network response was not ok.');
       }
-      
+
       // Check the response type before parsing
       const contentType = response.headers.get('content-type');
       if (!contentType || !contentType.includes('application/json')) {
         throw new TypeError("Oops, we haven't got JSON!");
       }
-      
-      const data = await response.json();
-      console.log(data);
-    
+
+      const responseData = await response.json();
+      console.log(responseData);
+
     } catch (error) {
       console.error(':(', error);
     }
     setCurrentPosition(currentPosition + 1);
     navigate('/Image');
   };
-  
+
 
   const handleNoClick = async () => {
     try {
       const timeSpent = new Date().getTime() - startTime;
-  
+
       if (ControlVar === 0) {
         Error = 0;
       }
       const rowData = {
+        ID: ID,
+        gender: gender,
+        age: age,
+        visionImpediment: visionImpediment,
         CONDITION_A: primeraPalabra,
         CONDITION_B: segundaPalabra,
         GRAPH: terceraPalabra,
-        timeTaken: timeSpent, // make sure this is a number
-        Error: Error, // this should be a number indicating if there was an error
+        timeTaken: timeSpent,
+        Error: Error,
         controlCondition: ControlVar,
-        timePer: timeSpent // this should be a number
+        timePer: 1000
       };
-      
+
       const response = await fetch('https://experimentdeploy.azurewebsites.net/insertRows', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-              'Host': 'experimentdeploy.azurewebsites.net'
-          },
-          body: JSON.stringify(rowData)
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Host': 'experimentdeploy.azurewebsites.net'
+        },
+        body: JSON.stringify(rowData)
       });
-  
-  
-      const data = await response.json();
-      console.log(data);
-  
+
+
+      const responseData = await response.json();
+      console.log(responseData);
+
     } catch (error) {
       console.error(':(', error);
     }
@@ -129,12 +139,12 @@ const Respuesta = () => {
   };
 
   return (
-
     <div>
-    <h2>¿Pertencen al mismo paciente?</h2>
-    <button className="button" onClick={handleYesClick}>Sí</button>
-    <button className="button" onClick={handleNoClick}>No</button>
-  </div>
-)};
+      <h2>¿Pertenecen al mismo paciente?</h2>
+      <button className="button" onClick={handleYesClick}>Sí</button>
+      <button className="button" onClick={handleNoClick}>No</button>
+    </div>
+  );
+};
 
 export default Respuesta;

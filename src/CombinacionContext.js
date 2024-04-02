@@ -9,38 +9,39 @@ export const CombinacionProvider = ({ children }) => {
 
   const [data, setData] = useState([]);
   const [currentPosition, setCurrentPosition] = useState(0);
-  const currentRow =  [];
   const [ID, setID] = useState('');
   const [gender, setGender] = useState('');
   const [age, setAge] = useState('');
   const [visionImpediment, setVisionImpediment] = useState('');
+  const [parsedData, setParsedData] = useState([]);
 
-  
-};
-
+  // Function to generate new combination
   const generarNuevaCombinacion = () => {
-    // Código para generar una nueva combinación
+    // Implementation of generating a new combination
   };
 
+  // Function to check if all combinations are generated
   const isAllCombinationsGenerated = () => {
+    // Check if currentPosition is less than the length of parsedData
     if (currentPosition < parsedData.length) {
-      return false
-    }else{
-      return true
+      return false;
+    } else {
+      return true;
     }
   };
 
   useEffect(() => {
-    // Lee el archivo CSV al inicializar el contexto
+    // Read CSV file when the component mounts
     const fetchData = async () => {
       const response = await fetch('/public/assets/cambinaciones.csv'); 
       const reader = response.body.getReader();
       const result = await reader.read();
       const decoder = new TextDecoder('utf-8');
       const csv = decoder.decode(result.value);
-      const parsedData = Papa.parse(csv).data;
-      if (currentPosition < parsedData.length) {
-        const currentRow = parsedData[currentPosition];
+      const parsedCSV = Papa.parse(csv).data;
+      setParsedData(parsedCSV);
+      if (currentPosition < parsedCSV.length) {
+        const currentRow = parsedCSV[currentPosition];
         setData(currentRow);
       }
     };
@@ -48,8 +49,9 @@ export const CombinacionProvider = ({ children }) => {
     fetchData();
   }, [currentPosition]);
 
+  // Return the context provider with the values
   return (
-    <CombinacionContext.Provider value={{ data,setCurrentPosition, ID, setID, gender, setGender, age, setAge, visionImpediment, setVisionImpediment, generarNuevaCombinacion, isAllCombinationsGenerated }}>
+    <CombinacionContext.Provider value={{ data, setCurrentPosition, ID, setID, gender, setGender, age, setAge, visionImpediment, setVisionImpediment, generarNuevaCombinacion, isAllCombinationsGenerated }}>
       {children}
     </CombinacionContext.Provider>
   );
