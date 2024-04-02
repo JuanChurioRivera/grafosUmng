@@ -5,8 +5,8 @@ import { useCombinacion } from './CombinacionContext';
 
 const ImageComponent = () => {
   const navigate = useNavigate();
-  const { combinacion } = useCombinacion();
-  const [primeraPalabra, segundaPalabra, terceraPalabra] = combinacion;
+  const { data } = useCombinacion();
+  const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
 
   // Calcula las rutas de las imágenes en la carpeta public
   let imagePath1, imagePath2;
