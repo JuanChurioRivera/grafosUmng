@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './assets/styleCaract.css';
+import './assets/styleCarac.css';
 
 const Caracterizacion = () => {
     const navigate = useNavigate();
