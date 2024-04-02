@@ -22,7 +22,7 @@ const Caracterizacion = () => {
         };
 
         try {
-            const response = await fetch('https://experimentdeploy.azurewebsites.net/insertUser', {
+            const response = await fetch('experimentdeploy.azurewebsites.net/insertUser', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
