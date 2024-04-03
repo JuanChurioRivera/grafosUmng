@@ -48,18 +48,12 @@ const Caracterizacion = () => {
     
             const data = await response.json(); // Parse JSON response
     
-            console.log("Response data:", data); // Log the response data
-    
-            if (!data || !data.id) {
-                console.warn('Unexpected data format:', data);
-                // Handle unexpected data format gracefully here
-                return;
-            }
+            setID(data)
     
             setID(data.id);
     
             const rowData = {
-                ID: data.id + 1, // Update rowData with the new ID value
+                ID: data + 1, // Update rowData with the new ID value
                 age: checkboxes.edad,
                 gender: checkboxes.genero,
                 visionImpediment: checkboxes.visual
