@@ -31,9 +31,9 @@ const Caracterizacion = () => {
 
     const handleClick = async (event) => {
         event.preventDefault(); // Prevent default form submission behavior
-
+    
         console.log("porfi");
-
+    
         try {
             const response = await fetch('https://experimentdeploy.azurewebsites.net/getLatestUser', {
                 method: 'GET',
@@ -41,19 +41,28 @@ const Caracterizacion = () => {
                     'Content-Type': 'application/json'
                 }
             });
-            // Replace with your actual FastAPI endpoint URL
+    
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+    
             const data = await response.json(); // Parse JSON response
-            setID(data);
-        
+    
+            if (!data || !data.id) {
+                throw new Error('Invalid data format');
+            }
+    
+            setID(data.id);
+    
             const rowData = {
-                ID: data + 1, // Update rowData with the new ID value
+                ID: data.id + 1, // Update rowData with the new ID value
                 age: checkboxes.edad,
                 gender: checkboxes.genero,
                 visionImpediment: checkboxes.visual
             };
-        
+    
             console.log(rowData);
-        
+    
             const insertResponse = await fetch('https://experimentdeploy.azurewebsites.net/insertUser', {
                 method: 'POST',
                 headers: {
@@ -61,7 +70,7 @@ const Caracterizacion = () => {
                 },
                 body: JSON.stringify(rowData)
             });
-        
+    
             if (insertResponse.ok) {
                 setGender(rowData.gender);
                 setAge(rowData.age);
@@ -73,8 +82,8 @@ const Caracterizacion = () => {
         } catch (error) {
             console.error('Error:', error);
         }
-        
     };
+    
 
     return (
         <div>
