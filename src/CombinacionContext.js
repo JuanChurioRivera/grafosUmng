@@ -23,6 +23,7 @@ export const CombinacionProvider = ({ children }) => {
   // Function to check if all combinations are generated
   const isAllCombinationsGenerated = () => {
     // Check if currentPosition is less than the length of parsedData
+    console.log(currentPosition, parsedData.length)
     if (currentPosition < parsedData.length) {
       return false;
     } else {
