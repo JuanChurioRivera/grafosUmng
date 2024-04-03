@@ -72,7 +72,7 @@ const Caracterizacion = () => {
             if (insertResponse.ok) {
                 setGender(rowData.gender);
                 setAge(rowData.age);
-                setVisionImpediment(rowData.visual);
+                setVisionImpediment(rowData.visionImpediment);
                 navigate('/Image');
             } else {
                 console.error('Failed to insert user');
