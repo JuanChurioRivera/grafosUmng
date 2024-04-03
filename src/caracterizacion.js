@@ -52,7 +52,7 @@ const Caracterizacion = () => {
                 visionImpediment: checkboxes.visual
             };
         
-            console.log(rowData);
+            
         
             const insertResponse = await fetch('https://experimentdeploy.azurewebsites.net/insertUser', {
                 method: 'POST',
@@ -68,6 +68,7 @@ const Caracterizacion = () => {
                 setVisionImpediment(rowData.visual);
                 navigate('/Image');
             } else {
+                console.log(rowData);
                 console.error('Failed to insert user');
             }
         } catch (error) {
