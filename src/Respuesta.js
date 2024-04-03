@@ -28,6 +28,8 @@ const Respuesta = () => {
 
   const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
   console.log(data)
+  console.log(isAllCombinationsGenerated)
+  console.log(currentPosition)
 
   var ControlVar = 0;
   var Error = 1;
