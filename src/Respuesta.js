@@ -36,7 +36,7 @@ const Respuesta = () => {
   const [startTime, setStartTime] = useState(null);
 
   useEffect(() => {
-    if (parsedData.lenght <= currentPosition) {
+    if (180 <= currentPosition) {
       navigate('/End'); // Navigate to the new component when all combinations are generated
     }
   }, [currentPosition, navigate]);
