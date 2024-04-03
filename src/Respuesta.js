@@ -21,7 +21,6 @@ const Respuesta = () => {
     gender,
     visionImpediment,
     data,
-    generarNuevaCombinacion,
     isAllCombinationsGenerated,
     currentPosition // Destructure currentPosition from the context
   } = useCombinacion(); // Call hook once and destructure all needed values

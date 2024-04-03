@@ -23,7 +23,7 @@ export const CombinacionProvider = ({ children }) => {
   // Function to check if all combinations are generated
   const isAllCombinationsGenerated = () => {
     // Check if currentPosition is less than the length of parsedData
-    console.log(currentPosition, parsedData.length)
+    
     if (currentPosition < parsedData.length) {
       return false;
     } else {
@@ -52,7 +52,7 @@ export const CombinacionProvider = ({ children }) => {
 
   // Return the context provider with the values
   return (
-    <CombinacionContext.Provider value={{ data, setCurrentPosition, ID, setID, gender, setGender, age, setAge, visionImpediment, setVisionImpediment, generarNuevaCombinacion, isAllCombinationsGenerated }}>
+    <CombinacionContext.Provider value={{ data,currentPosition, setCurrentPosition, ID, setID, gender, setGender, age, setAge, visionImpediment, setVisionImpediment, generarNuevaCombinacion, isAllCombinationsGenerated }}>
       {children}
     </CombinacionContext.Provider>
   );
