@@ -50,7 +50,7 @@ const Caracterizacion = () => {
     
             setID(data)
     
-            setID(data.id);
+            
     
             const rowData = {
                 ID: data + 1, // Update rowData with the new ID value
