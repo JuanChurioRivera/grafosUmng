@@ -49,10 +49,10 @@ const Caracterizacion = () => {
                 ID: data + 1, // Update rowData with the new ID value
                 age: checkboxes.edad,
                 gender: checkboxes.genero,
-                visionImpediment: checkboxes.visual
+                visual: checkboxes.visual
             };
         
-            
+            console.log(rowData);
         
             const insertResponse = await fetch('https://experimentdeploy.azurewebsites.net/insertUser', {
                 method: 'POST',
@@ -68,12 +68,12 @@ const Caracterizacion = () => {
                 setVisionImpediment(rowData.visual);
                 navigate('/Image');
             } else {
-                console.log(rowData);
                 console.error('Failed to insert user');
             }
         } catch (error) {
             console.error('Error:', error);
         }
+        
     };
 
     return (
