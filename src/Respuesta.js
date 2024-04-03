@@ -70,6 +70,7 @@ const Respuesta = () => {
         timePer: 1000
       };
 
+      console.log(rowData);
       const response = await fetch('https://experimentdeploy.azurewebsites.net/insertRows', {
         method: 'POST',
         headers: {
@@ -119,6 +120,8 @@ const Respuesta = () => {
         controlCondition: ControlVar,
         timePer: 1000
       };
+
+      console.log(rowData);
 
       const response = await fetch('https://experimentdeploy.azurewebsites.net/insertRows', {
         method: 'POST',
