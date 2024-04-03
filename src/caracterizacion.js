@@ -48,8 +48,12 @@ const Caracterizacion = () => {
     
             const data = await response.json(); // Parse JSON response
     
+            console.log("Response data:", data); // Log the response data
+    
             if (!data || !data.id) {
-                throw new Error('Invalid data format');
+                console.warn('Unexpected data format:', data);
+                // Handle unexpected data format gracefully here
+                return;
             }
     
             setID(data.id);
@@ -83,6 +87,7 @@ const Caracterizacion = () => {
             console.error('Error:', error);
         }
     };
+    
     
 
     return (
