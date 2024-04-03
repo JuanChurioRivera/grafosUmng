@@ -49,7 +49,7 @@ const Caracterizacion = () => {
                 ID: data + 1, // Update rowData with the new ID value
                 age: checkboxes.edad,
                 gender: checkboxes.genero,
-                visual: checkboxes.visual
+                visionImpediment: checkboxes.visual
             };
         
             console.log(rowData);
