@@ -33,7 +33,7 @@ export const CombinacionProvider = ({ children }) => {
   useEffect(() => {
     // Read CSV file when the component mounts
     const fetchData = async () => {
-      const response = await fetch('/assets/cambinaciones.csv'); 
+      const response = await fetch('/src/assets/cambinacion.csv');; 
       const reader = response.body.getReader();
       const result = await reader.read();
       const decoder = new TextDecoder('utf-8');
