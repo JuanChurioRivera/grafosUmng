@@ -15,6 +15,7 @@ const Respuesta = () => {
 
   const navigate = useNavigate();
   const {
+    parsedData,
     setCurrentPosition,
     ID,
     age,
@@ -35,10 +36,10 @@ const Respuesta = () => {
   const [startTime, setStartTime] = useState(null);
 
   useEffect(() => {
-    if (isAllCombinationsGenerated) {
+    if (parsedData.lenght <= currentPosition) {
       navigate('/End'); // Navigate to the new component when all combinations are generated
     }
-  }, [isAllCombinationsGenerated, navigate]);
+  }, [currentPosition, navigate]);
 
   if (primeraPalabra === segundaPalabra) {
     ControlVar = 1;
