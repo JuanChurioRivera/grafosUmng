@@ -48,9 +48,8 @@ const Caracterizacion = () => {
     
             const data = await response.json(); // Parse JSON response
     
-            setID(data);
     
-            console.log(ID);
+            console.log(data);
     
             const newRowID = parseInt(data) + 1; // Increment ID
             const rowData = {
@@ -72,6 +71,7 @@ const Caracterizacion = () => {
     
             if (insertResponse.ok) {
                 alert("Usuario creado correctamente");
+            
                 setGender(rowData.gender);
                 setAge(rowData.age);
                 setVisionImpediment(rowData.visionImpediment);
