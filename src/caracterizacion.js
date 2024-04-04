@@ -49,9 +49,10 @@ const Caracterizacion = () => {
             const data = await response.json(); // Parse JSON response
     
     
-            console.log(data);
+            
     
             const newRowID = parseInt(data) + 1; // Increment ID
+            setID(newRowID);
             const rowData = {
                 ID: newRowID, // Update rowData with the new ID value
                 age: checkboxes.edad,
@@ -71,7 +72,7 @@ const Caracterizacion = () => {
     
             if (insertResponse.ok) {
                 alert("Usuario creado correctamente");
-            
+                
                 setGender(rowData.gender);
                 setAge(rowData.age);
                 setVisionImpediment(rowData.visionImpediment);
