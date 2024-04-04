@@ -23,18 +23,11 @@ const RespuestaPrueba = () => {
     currentPositionPRUEBA // Destructure currentPosition from the context
   } = useCombinacion(); // Call hook once and destructure all needed values
 
-  const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
-  console.log(dataPRUEBA)
-  console.log(isAllCombinationsGenerated)
-  console.log(currentPosition)
 
-  var ControlVar = 0;
-  var Error = 1;
-  const [startTime, setStartTime] = useState(null);
 
   useEffect(() => {
-    if (180 <= currentPosition) {
-      navigate('/End'); // Navigate to the new component when all combinations are generated
+    if (10 <= currentPosition) {
+      navigate('/EndPrueba'); // Navigate to the new component when all combinations are generated
     }
   }, [currentPosition, navigate]);
 
