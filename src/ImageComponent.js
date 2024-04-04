@@ -7,6 +7,7 @@ const ImageComponent = () => {
   const navigate = useNavigate();
   const { data } = useCombinacion();
   const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
+  const [imagesLoaded, setImagesLoaded] = useState(false); 
 
   // Calcula las rutas de las imágenes en la carpeta public
   let imagePath1, imagePath2;
