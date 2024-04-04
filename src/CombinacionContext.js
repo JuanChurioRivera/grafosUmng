@@ -7,6 +7,9 @@ export const useCombinacion = () => useContext(CombinacionContext);
 
 export const CombinacionProvider = ({ children }) => {
 
+  const [dataPRUEBA, setDataPRUEBA] = useState([]);
+  const [currentPositionPRUEBA, setCurrentPositionPRUEBA] = useState(0);
+
   const [data, setData] = useState([]);
   const [currentPosition, setCurrentPosition] = useState(0);
   const [ID, setID] = useState('');
@@ -47,12 +50,26 @@ export const CombinacionProvider = ({ children }) => {
       }
     };
 
+    const fetchDataPrueba = async () => {
+      const response = await fetch(`${process.env.PUBLIC_URL}/assets/prueba.csv`);
+      const reader = response.body.getReader();
+      const result = await reader.read();
+      const decoder = new TextDecoder('utf-8');
+      const csv = decoder.decode(result.value);
+      const parsedCSV = Papa.parse(csv).data;
+      
+      if (currentPosition < parsedCSV.length) {
+        const currentRow = parsedCSV[currentPosition];
+        setDataPRUEBA(currentRow);
+      }
+    };
+
     fetchData();
   }, [currentPosition]);
 
   // Return the context provider with the values
   return (
-    <CombinacionContext.Provider value={{ parsedData,data,currentPosition, setCurrentPosition, ID, setID, gender, setGender, age, setAge, visionImpediment, setVisionImpediment, generarNuevaCombinacion, isAllCombinationsGenerated }}>
+    <CombinacionContext.Provider value={{ currentPositionPRUEBA,setCurrentPositionPRUEBA,dataPRUEBA,setCurrentPositionPRUEBA,parsedData,data,currentPosition, setCurrentPosition, ID, setID, gender, setGender, age, setAge, visionImpediment, setVisionImpediment, generarNuevaCombinacion, isAllCombinationsGenerated }}>
       {children}
     </CombinacionContext.Provider>
   );

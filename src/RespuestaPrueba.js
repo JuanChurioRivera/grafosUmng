@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { useCombinacionTest } from './CombinacionPrueba';// Make sure to import correctly
+import { useCombinacion } from './CombinacionContext';
+// Make sure to import correctly
 
 
 const RespuestaPrueba = () => {
@@ -17,11 +17,11 @@ const RespuestaPrueba = () => {
   const navigate = useNavigate();
   const {
     
-    setCurrentPosition,
-    data,
+    setCurrentPositionPRUEBA,
+    dataPRUEBA,
     isAllCombinationsGenerated,
-    currentPosition // Destructure currentPosition from the context
-  } = useCombinacionTest(); // Call hook once and destructure all needed values
+    currentPositionPRUEBA // Destructure currentPosition from the context
+  } = useCombinacion(); // Call hook once and destructure all needed values
 
   const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
   console.log(data)
@@ -49,14 +49,14 @@ const RespuestaPrueba = () => {
   const handleYesClick = async () => {
     
     
-    setCurrentPosition(currentPosition + 1);
+    setCurrentPositionPRUEBA(currentPositionPRUEBA + 1);
     navigate('/ImagePrueba');
   };
 
 
   const handleNoClick = async () => {
     
-    setCurrentPosition(currentPosition + 1);
+    setCurrentPositionPRUEBA(currentPositionPRUEBA + 1);
     navigate('/ImagePrueba');
   };
 
