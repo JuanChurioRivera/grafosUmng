@@ -48,12 +48,13 @@ const Caracterizacion = () => {
     
             const data = await response.json(); // Parse JSON response
     
-            setID(data+1)
+            setID(data);
     
-            
+            console.log(ID);
     
+            const newRowID = parseInt(data) + 1; // Increment ID
             const rowData = {
-                ID: data, // Update rowData with the new ID value
+                ID: newRowID, // Update rowData with the new ID value
                 age: checkboxes.edad,
                 gender: checkboxes.genero,
                 visionImpediment: checkboxes.visual
@@ -70,11 +71,10 @@ const Caracterizacion = () => {
             });
     
             if (insertResponse.ok) {
-                alert("Usuario creado correctamente")
+                alert("Usuario creado correctamente");
                 setGender(rowData.gender);
                 setAge(rowData.age);
                 setVisionImpediment(rowData.visionImpediment);
-                
             } else {
                 console.error('Failed to insert user');
             }
