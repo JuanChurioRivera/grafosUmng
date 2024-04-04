@@ -26,18 +26,14 @@ const RespuestaPrueba = () => {
 
 
   useEffect(() => {
-    if (10 <= currentPosition) {
+    if (10 <= currentPositionPRUEBA) {
       navigate('/EndPrueba'); // Navigate to the new component when all combinations are generated
     }
-  }, [currentPosition, navigate]);
+  }, [currentPositionPRUEBA, navigate]);
 
-  if (primeraPalabra === segundaPalabra) {
-    ControlVar = 1;
-  }
+  
 
-  useEffect(() => {
-    setStartTime(new Date().getTime()); // Set the start time to the current time
-  }, []);
+  
 
   const handleYesClick = async () => {
     
