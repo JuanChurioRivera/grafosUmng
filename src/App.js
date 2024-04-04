@@ -21,7 +21,7 @@ function App() {
             <Route path="/Image" element={<ImageComponent/>} />
             <Route path="/ImagePrueba" element={<ImagePrueba/>} />
             <Route path="/respuesta" element={<Respuesta/>} />
-            <Route path="/RespuestPrueba" element={<RespuestaPrueba/>} />
+            <Route path="/RespuestaPrueba" element={<RespuestaPrueba/>} />
             <Route path="/End" element={<End/>} />
             <Route path="/EndPrueba" element={<EndPrueba/>} />
             
