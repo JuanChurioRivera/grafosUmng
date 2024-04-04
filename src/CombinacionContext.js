@@ -70,7 +70,7 @@ export const CombinacionProvider = ({ children }) => {
 
   // Return the context provider with the values
   return (
-    <CombinacionContext.Provider value={{ currentPositionPRUEBA,setCurrentPositionPRUEBA,dataPRUEBA,setCurrentPositionPRUEBA,parsedData,data,currentPosition, setCurrentPosition, ID, setID, gender, setGender, age, setAge, visionImpediment, setVisionImpediment, generarNuevaCombinacion, isAllCombinationsGenerated }}>
+    <CombinacionContext.Provider value={{ currentPositionPRUEBA,setCurrentPositionPRUEBA,dataPRUEBA,setCurrentPositionPRUEBA,parsedData,data,currentPosition }}>
       {children}
     </CombinacionContext.Provider>
   );
