@@ -4,13 +4,13 @@ import { useCombinacionTest } from './CombinacionPrueba';
 import './assets/estiloRespuesta.css';
 
 const EndPrueba = () => {
-    const {setCurrentPosition} = useCombinacionTest(); 
+    const {setCurrentPositionPRUEBA} = useCombinacion(); 
     const navigate = useNavigate();
 
     const handleYesClick = async () => {
     
     
-        setCurrentPosition(0);
+        setCurrentPositionPRUEBA(0);
         navigate('/ImagePrueba');
       };
     

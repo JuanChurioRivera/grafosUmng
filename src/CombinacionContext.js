@@ -50,6 +50,13 @@ export const CombinacionProvider = ({ children }) => {
       }
     };
 
+    
+
+    fetchData();
+    
+  }, [currentPosition]);
+
+  useEffect(() => {
     const fetchDataPrueba = async () => {
       const response = await fetch(`${process.env.PUBLIC_URL}/assets/prueba.csv`);
       const reader = response.body.getReader();
@@ -64,9 +71,10 @@ export const CombinacionProvider = ({ children }) => {
       }
     };
 
-    fetchData();
     fetchDataPrueba();
-  }, [currentPosition]);
+
+  }, [currentPositionPRUEBA]);
+    
 
   // Return the context provider with the values
   return (
