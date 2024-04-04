@@ -65,6 +65,7 @@ export const CombinacionProvider = ({ children }) => {
     };
 
     fetchData();
+    fetchDataPrueba();
   }, [currentPosition]);
 
   // Return the context provider with the values
