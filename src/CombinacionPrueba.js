@@ -52,8 +52,8 @@ export const CombinacionProvider = ({ children }) => {
 
   // Return the context provider with the values
   return (
-    <CombinacionContext.Provider value={{ parsedData,data,currentPosition, setCurrentPosition, ID, setID, gender, setGender, age, setAge, visionImpediment, setVisionImpediment, generarNuevaCombinacion, isAllCombinationsGenerated }}>
+    <CombinacionPrueba.Provider value={{ parsedData,data,currentPosition, setCurrentPosition, ID, setID, gender, setGender, age, setAge, visionImpediment, setVisionImpediment, generarNuevaCombinacion, isAllCombinationsGenerated }}>
       {children}
-    </CombinacionContext.Provider>
+    </CombinacionPrueba.Provider>
   );
 };
