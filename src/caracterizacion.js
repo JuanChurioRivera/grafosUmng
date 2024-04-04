@@ -34,14 +34,9 @@ const Caracterizacion = () => {
     
         console.log("porfi");
 
-        const rowData = {
-            ID: 45, // Update rowData with the new ID value
-            age: checkboxes.edad,
-            gender: checkboxes.genero,
-            visionImpediment: checkboxes.visual
-        };
+        
 
-        console.log(rowData);
+        
     
         try {
             const response = await fetch('https://experimentdeploy.azurewebsites.net/getLatestUser', {
@@ -59,7 +54,7 @@ const Caracterizacion = () => {
     
             setID(data)
     
-            
+            console.log(ID);
     
             const rowData = {
                 ID: data + 1, // Update rowData with the new ID value
@@ -79,6 +74,7 @@ const Caracterizacion = () => {
             });
     
             if (insertResponse.ok) {
+                alert("Usuario creado correctamente")
                 setGender(rowData.gender);
                 setAge(rowData.age);
                 setVisionImpediment(rowData.visionImpediment);
