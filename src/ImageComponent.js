@@ -16,22 +16,34 @@ const ImageComponent = () => {
   }
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate('/respuesta');
-    }, 200);
-
-    return () => clearTimeout(timer);
-  }, [navigate]);
+    if (imagesLoaded) {
+      const timer = setTimeout(() => {
+        navigate('/RespuestaPrueba');
+      }, 200);
+  
+      return () => clearTimeout(timer);
+    }
+  }, [imagesLoaded, navigate]);
 
   return (
     <div className="image-container">
       <div className="image-wrapper">
-        {imagePath1 && <img src={imagePath1} alt="Gráfico 1" />}
-        
+        {imagePath1 && (
+          <img
+            src={imagePath1}
+            alt="Gráfico 1"
+            onLoad={() => setImagesLoaded(true)} // Set imagesLoaded to true when image is loaded
+          />
+        )}
       </div>
       <div className="image-wrapper">
-        {imagePath2 && <img src={imagePath2} alt="Gráfico 2" />}
-        
+        {imagePath2 && (
+          <img
+            src={imagePath2}
+            alt="Gráfico 2"
+            onLoad={() => setImagesLoaded(true)} // Set imagesLoaded to true when image is loaded
+          />
+        )}
       </div>
     </div>
   );
