@@ -34,10 +34,6 @@ const Caracterizacion = () => {
     
         console.log("porfi");
 
-        
-
-        
-    
         try {
             const response = await fetch('https://experimentdeploy.azurewebsites.net/getLatestUser', {
                 method: 'GET',
@@ -52,12 +48,12 @@ const Caracterizacion = () => {
     
             const data = await response.json(); // Parse JSON response
     
-            setID(data)
+            setID(data+1)
     
-            console.log(ID);
+            
     
             const rowData = {
-                ID: data + 1, // Update rowData with the new ID value
+                ID: data, // Update rowData with the new ID value
                 age: checkboxes.edad,
                 gender: checkboxes.genero,
                 visionImpediment: checkboxes.visual
