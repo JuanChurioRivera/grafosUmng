@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCombinacionTest } from './CombinacionPrueba';
+import './assets/estiloRespuesta.css';
 
 const EndPrueba = () => {
     const {setCurrentPosition} = useCombinacionTest(); 
+    const navigate = useNavigate();
 
     const handleYesClick = async () => {
     

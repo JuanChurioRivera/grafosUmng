@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import Papa from 'papaparse';
-
+import './assets/estiloRespuesta.css';
 const CombinacionContext = createContext();
 
 export const useCombinacionTest = () => useContext(CombinacionContext);
