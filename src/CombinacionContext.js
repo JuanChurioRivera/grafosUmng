@@ -24,15 +24,7 @@ export const CombinacionProvider = ({ children }) => {
   };
 
   // Function to check if all combinations are generated
-  const isAllCombinationsGenerated = () => {
-    // Check if currentPosition is less than the length of parsedData
-    
-    if (currentPosition < parsedData.length) {
-      return false;
-    } else {
-      return true;
-    }
-  };
+ 
 
   useEffect(() => {
     // Read CSV file when the component mounts
