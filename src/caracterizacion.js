@@ -35,7 +35,7 @@ const Caracterizacion = () => {
         console.log("porfi");
 
         const rowData = {
-            ID: data + 1, // Update rowData with the new ID value
+            ID: 45, // Update rowData with the new ID value
             age: checkboxes.edad,
             gender: checkboxes.genero,
             visionImpediment: checkboxes.visual
