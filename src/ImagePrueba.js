@@ -17,7 +17,7 @@ const ImagePrueba = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate('/respuesta');
+      navigate('/RespuestaPrueba');
     }, 200);
 
     return () => clearTimeout(timer);
