@@ -73,7 +73,7 @@ const Caracterizacion = () => {
                 setGender(rowData.gender);
                 setAge(rowData.age);
                 setVisionImpediment(rowData.visionImpediment);
-                navigate('/Image');
+                navigate('/ImagePrueba');
             } else {
                 console.error('Failed to insert user');
             }
@@ -100,7 +100,7 @@ const Caracterizacion = () => {
                 <input type="radio" id="visual" name="visual" value="Si" onChange={handleInputChange} /> Si
                 <input type="radio" id="visual" name="visual" value="No" onChange={handleInputChange} /> No
 
-                <button type="submit" onClick={handleClick}>Empezar</button>
+                <button type="submit" onClick={handleClick}>Empezar Prueba</button>
             </form>
         </div>
     );
