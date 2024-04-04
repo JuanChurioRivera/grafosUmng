@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useCombinacionTest } from './CombinacionPrueba';// Make sure to import correctly
-import './assets/estiloRespuesta.css';
+
 
 const RespuestaPrueba = () => {
 
@@ -67,8 +67,8 @@ const RespuestaPrueba = () => {
   return (
     <div>
       <h2>¿Son iguales?</h2>
-      <button className="button" onClick={handleYesClick}>Sí</button>
-      <button className="button" onClick={handleNoClick}>No</button>
+      <button  onClick={handleYesClick}>Sí</button>
+      <button  onClick={handleNoClick}>No</button>
     </div>
   );
 };
