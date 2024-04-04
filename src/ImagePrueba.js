@@ -5,8 +5,8 @@ import { useCombinacion } from './CombinacionContext';
 
 const ImagePrueba = () => {
   const navigate = useNavigate();
-  const { data } = useCombinacion();
-  const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
+  const { dataPRUEBA } = useCombinacion();
+  const [primeraPalabra, segundaPalabra, terceraPalabra] = dataPRUEBA;
 
   // Calcula las rutas de las imágenes en la carpeta public
   let imagePath1, imagePath2;
