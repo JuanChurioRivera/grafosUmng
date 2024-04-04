@@ -1,10 +1,11 @@
-import axios from 'axios';
+
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCombinacion } from './CombinacionContext'; // Make sure to import correctly
+
+import { useCombinacionTest } from './CombinacionPrueba';// Make sure to import correctly
 import './assets/estiloRespuesta.css';
 
-const Respuesta = () => {
+const RespuestaPrueba = () => {
 
   useEffect(() => {
     const meta = document.createElement('meta');
@@ -24,7 +25,7 @@ const Respuesta = () => {
     data,
     isAllCombinationsGenerated,
     currentPosition // Destructure currentPosition from the context
-  } = useCombinacion(); // Call hook once and destructure all needed values
+  } = useCombinacionTest(); // Call hook once and destructure all needed values
 
   const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
   console.log(data)
@@ -50,97 +51,17 @@ const Respuesta = () => {
   }, []);
 
   const handleYesClick = async () => {
-    try {
-      const timeSpent = new Date().getTime() - startTime;
-
-      if (ControlVar === 1) {
-        Error = 0;
-      }
-      const rowData = {
-        ID: ID,
-        gender: gender,
-        age: age,
-        visionImpediment: visionImpediment,
-        CONDITION_A: primeraPalabra,
-        CONDITION_B: segundaPalabra,
-        GRAPH: terceraPalabra,
-        timeTaken: timeSpent,
-        Error: Error,
-        controlCondition: ControlVar,
-        timePer: 1000
-      };
-
-      console.log(rowData);
-      const response = await fetch('https://experimentdeploy.azurewebsites.net/insertRows', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(rowData)
-      });
-
-      if (!response.ok) {
-        throw new TypeError('Network response was not ok.');
-      }
-
-      // Check the response type before parsing
-      const contentType = response.headers.get('content-type');
-      if (!contentType || !contentType.includes('application/json')) {
-        throw new TypeError("Oops, we haven't got JSON!");
-      }
-
-      const responseData = await response.json();
-      console.log(responseData);
-
-    } catch (error) {
-      console.error(':(', error);
-    }
+    
+    
     setCurrentPosition(currentPosition + 1);
-    navigate('/Image');
+    navigate('/ImagePrueba');
   };
 
 
   const handleNoClick = async () => {
-    try {
-      const timeSpent = new Date().getTime() - startTime;
-
-      if (ControlVar === 0) {
-        Error = 0;
-      }
-      const rowData = {
-        ID: ID,
-        gender: gender,
-        age: age,
-        visionImpediment: visionImpediment,
-        CONDITION_A: primeraPalabra,
-        CONDITION_B: segundaPalabra,
-        GRAPH: terceraPalabra,
-        timeTaken: timeSpent,
-        Error: Error,
-        controlCondition: ControlVar,
-        timePer: 1000
-      };
-
-      console.log(rowData);
-
-      const response = await fetch('https://experimentdeploy.azurewebsites.net/insertRows', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Host': 'experimentdeploy.azurewebsites.net'
-        },
-        body: JSON.stringify(rowData)
-      });
-
-
-      const responseData = await response.json();
-      console.log(responseData);
-
-    } catch (error) {
-      console.error(':(', error);
-    }
+    
     setCurrentPosition(currentPosition + 1);
-    navigate('/Image');
+    navigate('/ImagePrueba');
   };
 
   return (
@@ -152,4 +73,4 @@ const Respuesta = () => {
   );
 };
 
-export default Respuesta;
+export default RespuestaPrueba;

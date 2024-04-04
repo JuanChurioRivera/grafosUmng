@@ -3,7 +3,7 @@ import Papa from 'papaparse';
 
 const CombinacionContext = createContext();
 
-export const useCombinacion = () => useContext(CombinacionContext);
+export const useCombinacionTest = () => useContext(CombinacionContext);
 
 export const CombinacionProvider = ({ children }) => {
 
@@ -34,7 +34,7 @@ export const CombinacionProvider = ({ children }) => {
   useEffect(() => {
     // Read CSV file when the component mounts
     const fetchData = async () => {
-      const response = await fetch(`${process.env.PUBLIC_URL}/assets/cambinaciones.csv`);
+      const response = await fetch(`${process.env.PUBLIC_URL}/assets/prueba.csv`);
       const reader = response.body.getReader();
       const result = await reader.read();
       const decoder = new TextDecoder('utf-8');

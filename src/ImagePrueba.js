@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './assets/style.css';
 import { useCombinacion } from './CombinacionContext';
 
-const ImageComponent = () => {
+const ImagePrueba = () => {
   const navigate = useNavigate();
   const { data } = useCombinacion();
   const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
@@ -37,4 +37,4 @@ const ImageComponent = () => {
   );
 };
 
-export default ImageComponent;
+export default ImagePrueba;

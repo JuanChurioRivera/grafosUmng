@@ -6,6 +6,9 @@ import Respuesta from './Respuesta';
 import Home from  './Home';
 import End from './End';
 import Caracterizacion from './caracterizacion';
+import ImagePrueba from './ImagePrueba';
+import RespuestaPrueba from './RespuestaPrueba';
+import EndPrueba from './EndPrueba';
 
 function App() {
   return (
@@ -16,8 +19,12 @@ function App() {
             <Route path="/" element={<Home/>} />
             <Route path="/Caracterizacion" element={<Caracterizacion/>} />
             <Route path="/Image" element={<ImageComponent/>} />
+            <Route path="/ImagePrueba" element={<ImagePrueba/>} />
             <Route path="/respuesta" element={<Respuesta/>} />
+            <Route path="/RespuestPrueba" element={<RespuestaPrueba/>} />
             <Route path="/End" element={<End/>} />
+            <Route path="/EndPrueba" element={<EndPrueba/>} />
+            
             
             
           </Routes>
