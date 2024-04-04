@@ -24,6 +24,7 @@ const RespuestaPrueba = () => {
   } = useCombinacion(); // Call hook once and destructure all needed values
 
   console.log(currentPositionPRUEBA)
+  console.log(dataPRUEBA)
 
   useEffect(() => {
     if (10 <= currentPositionPRUEBA) {
