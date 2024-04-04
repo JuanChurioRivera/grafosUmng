@@ -24,7 +24,7 @@ const RespuestaPrueba = () => {
   } = useCombinacion(); // Call hook once and destructure all needed values
 
   const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
-  console.log(data)
+  console.log(dataPRUEBA)
   console.log(isAllCombinationsGenerated)
   console.log(currentPosition)
 
