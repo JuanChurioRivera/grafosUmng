@@ -33,6 +33,15 @@ const Caracterizacion = () => {
         event.preventDefault(); // Prevent default form submission behavior
     
         console.log("porfi");
+
+        const rowData = {
+            ID: data + 1, // Update rowData with the new ID value
+            age: checkboxes.edad,
+            gender: checkboxes.genero,
+            visionImpediment: checkboxes.visual
+        };
+
+        console.log(rowData);
     
         try {
             const response = await fetch('https://experimentdeploy.azurewebsites.net/getLatestUser', {
