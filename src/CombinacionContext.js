@@ -49,22 +49,25 @@ export const CombinacionProvider = ({ children }) => {
   }, [currentPosition]);
 
   useEffect(() => {
-    const fetchDataPrueba = async () => {
-      const response = await fetch(`${process.env.PUBLIC_URL}/assets/prueba.csv`);
+    // Read CSV file when the component mounts
+    const fetchData = async () => {
+      const response = await fetch(`${process.env.PUBLIC_URL}/assets/cambinaciones.csv`);
       const reader = response.body.getReader();
       const result = await reader.read();
       const decoder = new TextDecoder('utf-8');
       const csv = decoder.decode(result.value);
       const parsedCSV = Papa.parse(csv).data;
-      
+      setParsedData(parsedCSV);
       if (currentPosition < parsedCSV.length) {
-        const currentRow = parsedCSV[currentPosition];
+        const currentRow = parsedCSV[currentPositionPRUEBA];
         setDataPRUEBA(currentRow);
       }
     };
 
-    fetchDataPrueba();
+    
 
+    fetchData();
+    
   }, [currentPositionPRUEBA]);
     
 
