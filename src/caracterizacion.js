@@ -73,13 +73,15 @@ const Caracterizacion = () => {
                 setGender(rowData.gender);
                 setAge(rowData.age);
                 setVisionImpediment(rowData.visionImpediment);
-                navigate('/ImagePrueba');
+                
             } else {
                 console.error('Failed to insert user');
             }
         } catch (error) {
             console.error('Error:', error);
         }
+
+        navigate('/ImagePrueba');
     };
     
     
