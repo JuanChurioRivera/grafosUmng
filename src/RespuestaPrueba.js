@@ -16,12 +16,8 @@ const RespuestaPrueba = () => {
 
   const navigate = useNavigate();
   const {
-    parsedData,
+    
     setCurrentPosition,
-    ID,
-    age,
-    gender,
-    visionImpediment,
     data,
     isAllCombinationsGenerated,
     currentPosition // Destructure currentPosition from the context
