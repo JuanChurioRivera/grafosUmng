@@ -22,38 +22,43 @@ const ImageComponent = () => {
     imagePath2 = `${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`;
   }
 
+  const navigateAfterDelay = () => {
+    setTimeout(() => {
+      navigate('/RespuestaPrueba');
+    }, 200);
+  };
+
   useEffect(() => {
-    if (imagesLoaded) {
-      const timer = setTimeout(() => {
-        setShowImage(false);
-        navigate('/respuesta');
-      }, 200);
-  
-      return () => clearTimeout(timer);
+    if (primeraPalabra && segundaPalabra && terceraPalabra) {
+      const imagePath1 = `${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`;
+      const imagePath2 = `${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`;
+
+      const img1 = new Image();
+      const img2 = new Image();
+
+      img1.onload = () => {
+        img2.onload = () => {
+          navigateAfterDelay();
+        };
+        img2.src = imagePath2;
+      };
+
+      img1.src = imagePath1;
     }
-  }, [imagesLoaded, navigate]);
+  }, [primeraPalabra, segundaPalabra, terceraPalabra, navigateAfterDelay]);
 
   return (
     <div className="image-container">
-      <div className="image-wrapper">
       {showImage && (
-        <img
-          src={imagePath1}
-          alt="Gráfico 2"
-          onLoad={() => setImagesLoaded(true)}
-          />
-        )}
-      </div>
-      <div className="image-wrapper">
-        {showImage && (
-          <img
-            src={imagePath2}
-            alt="Gráfico 2"
-            onLoad={() => setImagesLoaded(true)}
-          // Set imagesLoaded to true when image is loaded
-            />
-        )}
-      </div>
+        <>
+          <div className="image-wrapper">
+            <img src={`${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 1" />
+          </div>
+          <div className="image-wrapper">
+            <img src={`${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 2" />
+          </div>
+        </>
+      )}
     </div>
   );
 };

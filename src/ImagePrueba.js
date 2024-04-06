@@ -27,7 +27,7 @@ const ImagePrueba = () => {
   const navigateAfterDelay = () => {
     setTimeout(() => {
       navigate('/RespuestaPrueba');
-    }, 1000);
+    }, 200);
   };
 
   useEffect(() => {
