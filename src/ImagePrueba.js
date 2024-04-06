@@ -13,16 +13,15 @@ const ImagePrueba = () => {
   useEffect(() => {
     const images = [];
 
-    
+    const pngFileNames = ['BBB _GV.jpg', 'BBB _GVH.jpg', 'BBB _SIGNAL.jpg','CARDIOMYOPATHY_GV.jpg','CARDIOMYOPATHY_GVH.jpg','CARDIOMYOPATHY_SIGNAL.jpg','CONTROL_GV.jpg','CONTROL_GVH.jpg','CONTROL_SIGNAL.jpg','DISRHYTMIA_GV.jpg','DISRHYTMIA_GVH.jpg','DISRHYTMIA_SIGNAL.jpg','MYOCARDIAL INFARCTION _GV.jpg','MYOCARDIAL INFARCTION _GVH.jpg','MYOCARDIAL INFARCTION _SIGNAL.jpg'];
 
     
     // Get all PNG files in the assets folder
-    const imageFiles = require.context(`${process.env.PUBLIC_URL}/assets`, false, /\.jpg$/);
-    imageFiles.keys().forEach((imageName) => {
-      const imagePath = imageFiles(imageName).default;
+    pngFileNames.forEach((fileName) => {
+      const imagePath = `${process.env.PUBLIC_URL}/assets/${fileName}`;
       const img = new Image();
       img.src = imagePath;
-      images.push(img);
+      images.push(imagePath); // Store the image path in the images array
     });
   }, []);
 
