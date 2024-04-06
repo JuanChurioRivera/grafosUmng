@@ -12,9 +12,12 @@ const ImagePrueba = () => {
 
   useEffect(() => {
     const images = [];
+
+    
+
     
     // Get all PNG files in the assets folder
-    const imageFiles = require.context(`${process.env.PUBLIC_URL}/assets`, false, /\.png$/);
+    const imageFiles = require.context(`${process.env.PUBLIC_URL}/assets`, false, /\.jpg$/);
     imageFiles.keys().forEach((imageName) => {
       const imagePath = imageFiles(imageName).default;
       const img = new Image();
