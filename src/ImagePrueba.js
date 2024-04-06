@@ -12,10 +12,10 @@ const ImagePrueba = () => {
 
   useEffect(() => {
     const images = [];
-    
+  
     // Require all PNG files from the assets folder
-    const requireImages = require.context(`${process.env.PUBLIC_URL}/assets/$`, false, /\.png$/);
-    
+    const requireImages = require.context(process.env.PUBLIC_URL + '/assets', false, /\.png$/);
+  
     // Loop through each required image and preload it
     requireImages.keys().forEach((imageName) => {
       const imagePath = requireImages(imageName).default;
