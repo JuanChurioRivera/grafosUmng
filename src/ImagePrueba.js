@@ -4,6 +4,7 @@ import './assets/style.css';
 import { useCombinacion } from './CombinacionContext';
 
 const ImagePrueba = () => {
+  const [showImage, setShowImage] = useState(true);
   const navigate = useNavigate();
   const { dataPRUEBA } = useCombinacion();
   const [primeraPalabra, segundaPalabra, terceraPalabra] = dataPRUEBA;
@@ -19,6 +20,7 @@ const ImagePrueba = () => {
   useEffect(() => {
     if (imagesLoaded) {
       const timer = setTimeout(() => {
+        setShowImage(false);
         navigate('/RespuestaPrueba');
       }, 200);
   
@@ -29,21 +31,22 @@ const ImagePrueba = () => {
   return (
     <div className="image-container">
       <div className="image-wrapper">
-        {imagePath1 && (
-          <img
-            src={imagePath1}
-            alt="Gráfico 1"
-            onLoad={() => setImagesLoaded(true)} // Set imagesLoaded to true when image is loaded
+      {showImage && (
+        <img
+          src={imagePath1}
+          alt="Gráfico 2"
+          onLoad={() => setImagesLoaded(true)}
           />
         )}
       </div>
       <div className="image-wrapper">
-        {imagePath2 && (
+        {showImage && (
           <img
             src={imagePath2}
             alt="Gráfico 2"
-            onLoad={() => setImagesLoaded(true)} // Set imagesLoaded to true when image is loaded
-          />
+            onLoad={() => setImagesLoaded(true)}
+          // Set imagesLoaded to true when image is loaded
+            />
         )}
       </div>
     </div>

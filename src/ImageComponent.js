@@ -4,10 +4,29 @@ import './assets/style.css';
 import { useCombinacion } from './CombinacionContext';
 
 const ImageComponent = () => {
+  const [showImage, setShowImage] = useState(true);
   const navigate = useNavigate();
   const { data } = useCombinacion();
   const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
-  const [imagesLoaded, setImagesLoaded] = useState(false); 
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  useEffect(() => {
+    const images = [];
+    
+    // Require all PNG files from the assets folder
+    const requireImages = require.context(`${process.env.PUBLIC_URL}/assets`, false, /\.png$/);
+    
+    // Loop through each required image and preload it
+    requireImages.keys().forEach((imageName) => {
+      const imagePath = requireImages(imageName).default;
+      const img = new Image();
+      img.src = imagePath;
+      images.push(imagePath); // Store the image path in the images array
+    });
+  }, []);
+
+  
+
 
   // Calcula las rutas de las imágenes en la carpeta public
   let imagePath1, imagePath2;
@@ -19,6 +38,7 @@ const ImageComponent = () => {
   useEffect(() => {
     if (imagesLoaded) {
       const timer = setTimeout(() => {
+        setShowImage(false);
         navigate('/respuesta');
       }, 200);
   
@@ -29,21 +49,22 @@ const ImageComponent = () => {
   return (
     <div className="image-container">
       <div className="image-wrapper">
-        {imagePath1 && (
-          <img
-            src={imagePath1}
-            alt="Gráfico 1"
-            onLoad={() => setImagesLoaded(true)} // Set imagesLoaded to true when image is loaded
+      {showImage && (
+        <img
+          src={imagePath1}
+          alt="Gráfico 2"
+          onLoad={() => setImagesLoaded(true)}
           />
         )}
       </div>
       <div className="image-wrapper">
-        {imagePath2 && (
+        {showImage && (
           <img
             src={imagePath2}
             alt="Gráfico 2"
-            onLoad={() => setImagesLoaded(true)} // Set imagesLoaded to true when image is loaded
-          />
+            onLoad={() => setImagesLoaded(true)}
+          // Set imagesLoaded to true when image is loaded
+            />
         )}
       </div>
     </div>
