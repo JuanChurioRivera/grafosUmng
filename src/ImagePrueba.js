@@ -12,16 +12,14 @@ const ImagePrueba = () => {
 
   useEffect(() => {
     const images = [];
-  
-    // Require all PNG files from the assets folder
-    const requireImages = require.context(process.env.PUBLIC_URL + '/assets', false, /\.png$/);
-  
-    // Loop through each required image and preload it
-    requireImages.keys().forEach((imageName) => {
-      const imagePath = requireImages(imageName).default;
+    
+    // Get all PNG files in the assets folder
+    const imageFiles = require.context(`${process.env.PUBLIC_URL}/assets`, false, /\.png$/);
+    imageFiles.keys().forEach((imageName) => {
+      const imagePath = imageFiles(imageName).default;
       const img = new Image();
       img.src = imagePath;
-      images.push(imagePath); // Store the image path in the images array
+      images.push(img);
     });
   }, []);
 
