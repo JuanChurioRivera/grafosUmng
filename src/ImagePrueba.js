@@ -36,8 +36,19 @@ const ImagePrueba = () => {
     if (imagesLoaded) {
       const timer = setTimeout(() => {
         setShowImage(false);
+        
+      }, 500); // 1000ms timer
+
+      return () => clearTimeout(timer);
+    }
+  }, [imagesLoaded]);
+
+  useEffect(() => {
+    if (imagesLoaded) {
+      const timer = setTimeout(() => {
+        
         navigate('/RespuestaPrueba');
-      }, 200);
+      }, 1000);
   
       return () => clearTimeout(timer);
     }
