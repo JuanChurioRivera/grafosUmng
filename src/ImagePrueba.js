@@ -10,6 +10,21 @@ const ImagePrueba = () => {
   const [primeraPalabra, segundaPalabra, terceraPalabra] = dataPRUEBA;
   const [imagesLoaded, setImagesLoaded] = useState(false); // State to track image loading
 
+  useEffect(() => {
+    const images = [];
+    
+    // Require all PNG files from the assets folder
+    const requireImages = require.context(`${process.env.PUBLIC_URL}/assets/$`, false, /\.png$/);
+    
+    // Loop through each required image and preload it
+    requireImages.keys().forEach((imageName) => {
+      const imagePath = requireImages(imageName).default;
+      const img = new Image();
+      img.src = imagePath;
+      images.push(imagePath); // Store the image path in the images array
+    });
+  }, []);
+
   // Calcula las rutas de las imágenes en la carpeta public
   let imagePath1, imagePath2;
   if (primeraPalabra && segundaPalabra && terceraPalabra) {
