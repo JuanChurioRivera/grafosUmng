@@ -84,7 +84,7 @@ const Caracterizacion = () => {
             console.error('Error:', error);
         }
 
-        navigate('/ImagePrueba');
+        navigate('/AntesPrueba');
     };
     
     
