@@ -5,7 +5,8 @@ const End = () => {
 return(
     <div>
         <h1>FIN</h1>
-        <h3>Muchas gracias por realizar esta prueba, nos ayudara mucho en la investigación</h3>
+        <h3>Muchas gracias por su colaboración, con su ayuda está colaborando en el proceso de investigación que estamos realizando al interior de la Universidad,  en colaboración con otras Universidades e Instituciones.
+</h3>
     </div>
 );
 

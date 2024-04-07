@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCombinacion } from './CombinacionContext';
 import './assets/estiloRespuesta.css';
 
-const EndPrueba = () => {
+const AntesPrueba = () => {
     const {setCurrentPositionPRUEBA} = useCombinacion(); 
     const navigate = useNavigate();
 
@@ -22,8 +22,8 @@ const EndPrueba = () => {
       };
 return(
     <div>
-        <h1>FIN ENTRENAMIENTO</h1>
-        <h3>Se ha terminado el entrenamiento. ¿Se siente preparado para hacer la prueba?. En caso de que lo desee puede hacer una vez más el entrenamiento. La prueba durará aproximadamente cinco (5) minutos. Por favor, pongase comodo. ¿Esta listo para iniciar?</h3>
+        <h1>ENTRENAMIENTO</h1>
+        <h3>Vamos a hacer una  prueba de entrenamiento para verificar que se entendió la tareas a realizar y pueda adaptarse a la velocidad en que las gráficas son presentadas. Este entrenamiento se puede realizar cuantas veces lo crea necesario. </h3>
         <button className="button" onClick={handleYesClick}>Volver a entranamiento</button>
       <button className="button" onClick={handleNoClick}>Empezar</button>
     </div>
@@ -31,4 +31,4 @@ return(
 
 }
 
-export default EndPrueba;
+export default AntesPrueba;

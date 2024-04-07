@@ -15,7 +15,9 @@ const Caracterizacion = () => {
     const [checkboxes, setCheckboxes] = useState({
         edad: '',
         genero: '',
-        visual: ''
+        visual: '',
+        condicion: '',
+        email: ''
     });
 
     const { ID, setID, setGender, setAge, setVisionImpediment } = useCombinacion();
@@ -48,16 +50,15 @@ const Caracterizacion = () => {
     
             const data = await response.json(); // Parse JSON response
     
-    
-            
-    
             const newRowID = parseInt(data) + 1; // Increment ID
             setID(newRowID);
             const rowData = {
                 ID: newRowID, // Update rowData with the new ID value
                 age: checkboxes.edad,
                 gender: checkboxes.genero,
-                visionImpediment: checkboxes.visual
+                email: checkboxes.email,
+                visionImpediment: checkboxes.visual,
+                condition: checkboxes.condicion
             };
     
             console.log(rowData);
@@ -100,9 +101,23 @@ const Caracterizacion = () => {
                 <input type="radio" id="genero" name="genero" value="Femenino" onChange={handleInputChange} /> Femenino
                 <input type="radio" id="genero" name="genero" value="Otro" onChange={handleInputChange} /> Otro
 
+                <label htmlFor="email">Correo electrónico (El correo electrónico sólo se usará para el registro):</label>
+                <input type="email" id="email" name="email" pattern=".+@example\.com" size="30" required onChange={handleInputChange} />
+
                 <label>Padece de alguna enfermedad visual:</label>
-                <input type="radio" id="visual" name="visual" value="Si" onChange={handleInputChange} /> Si
+                <input type="radio" id="visual" name="visual" value="Sí" onChange={handleInputChange} /> Si
                 <input type="radio" id="visual" name="visual" value="No" onChange={handleInputChange} /> No
+
+                <label htmlFor="condicion">En caso de haber respondido Sí en la anterior pregunta, seleccione la condición que mejor lo describe</label>
+                <select name="condicion" id="condicion" onChange={handleInputChange}>
+                    <option value=" "> </option>
+                    <option value="miopia">Miopía</option>
+                    <option value="hipermetropia">Hipermetropía</option>
+                    <option value="astigmatismo">Astigmatismo</option>
+                    <option value="miopia-astigmatismo">Miopía-Astigmatismo</option>
+                    <option value="hipermetropia-astigmatismo">Hipermetropía-Astigmatismo</option>
+                    <option value="otro">Otro</option>
+                </select>
 
                 <button type="submit" onClick={handleClick}>Empezar Prueba</button>
             </form>

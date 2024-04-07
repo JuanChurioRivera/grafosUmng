@@ -9,6 +9,7 @@ import Caracterizacion from './caracterizacion';
 import ImagePrueba from './ImagePrueba';
 import RespuestaPrueba from './RespuestaPrueba';
 import EndPrueba from './EndPrueba';
+import AntesPrueba from './AntesPrueba';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
             <Route path="/RespuestaPrueba" element={<RespuestaPrueba/>} />
             <Route path="/End" element={<End/>} />
             <Route path="/EndPrueba" element={<EndPrueba/>} />
-            
+            <Route path="/AntePrueba" element={<AntesPrueba/>} />
             
             
           </Routes>

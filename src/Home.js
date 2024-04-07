@@ -35,16 +35,10 @@ const Home = () => {
         <div>
             <h1>EXPERIMENTO</h1>
             <div id="container">
-                <textarea
-
-                    id="texto"
-                    placeholder="Bienvenido, su tarea será determinar si los dos graficos que vera a continuación pertenecen al mismo paciente, este preparado porque su tiempo será limitado para ver los graficos."
-                    cols = "40"
-                    rows= "20"
-
-                />
+                <p>Bienvenido, la tarea a realizar es comparar visualmente dos gráficas e identificar si son iguales o no. Las gráficas se presentarán por un breve espacio de tiempo, debe estar muy atento.</p>
                 <div>
                 <ul>
+                <label for="item1">Entendí las instrucciones de la prueba que voy a realizar</label>
                     <li>
                         <input
                             type="checkbox"
@@ -52,25 +46,42 @@ const Home = () => {
                             checked={checkboxes.item1}
                             onChange={handleCheckboxChange}
                         />
-                        <label htmlFor="item1">Entiendo lo que dice arriba</label>
+                        
                     </li>
                     <li>
+                    <label for="item2">Acepto que la información dada por las respuestas sea usado con fines investigativos</label>
                         <input
                             type="checkbox"
                             id="item2"
                             checked={checkboxes.item2}
                             onChange={handleCheckboxChange}
                         />
-                        <label htmlFor="item2">Acepto que la información dada por las respuestas sea usado con fines investigativos</label>
+                        
                     </li>
                     <li>
+                    <label for="item3">Solo hare esta prueba una unica vez</label>
                         <input
                             type="checkbox"
                             id="item3"
                             checked={checkboxes.item3}
                             onChange={handleCheckboxChange}
                         />
-                        <label htmlFor="item3">Solo hare esta prueba una unica vez</label>
+                        
+                    </li>
+
+                    <li>
+                    <label for="item3">Declaro que estoy haciendo la prueba de forma voluntaria y que en cualquier momento puedo abandonarla.</label>
+
+                        <input
+                            type="checkbox"
+                            id="item3"
+                            checked={checkboxes.item3}
+                            onChange={handleCheckboxChange}
+                        />
+                        </li>
+
+                    <li>
+                        
                     </li>
                 </ul>
                 </div>

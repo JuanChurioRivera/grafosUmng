@@ -15,12 +15,9 @@ const Respuesta = () => {
 
   const navigate = useNavigate();
   const {
-    parsedData,
+  
     setCurrentPosition,
     ID,
-    age,
-    gender,
-    visionImpediment,
     data,
     isAllCombinationsGenerated,
     currentPosition // Destructure currentPosition from the context
@@ -58,16 +55,13 @@ const Respuesta = () => {
       }
       const rowData = {
         ID: ID,
-        gender: gender,
-        age: age,
-        visionImpediment: visionImpediment,
         CONDITION_A: primeraPalabra,
         CONDITION_B: segundaPalabra,
         GRAPH: terceraPalabra,
         timeTaken: timeSpent,
         Error: Error,
-        controlCondition: ControlVar,
-        timePer: 1000
+        controlCondition: ControlVar
+        
       };
 
       console.log(rowData);
