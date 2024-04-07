@@ -25,7 +25,7 @@ function App() {
             <Route path="/RespuestaPrueba" element={<RespuestaPrueba/>} />
             <Route path="/End" element={<End/>} />
             <Route path="/EndPrueba" element={<EndPrueba/>} />
-            <Route path="/AntePrueba" element={<AntesPrueba/>} />
+            <Route path="/AntesPrueba" element={<AntesPrueba/>} />
             
             
           </Routes>
