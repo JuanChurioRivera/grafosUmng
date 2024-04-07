@@ -24,7 +24,7 @@ const ImageComponent = () => {
 
   const navigateAfterDelay = () => {
     setTimeout(() => {
-      navigate('/RespuestaPrueba');
+      navigate('/respuesta');
     }, 200);
   };
 
