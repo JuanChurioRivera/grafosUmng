@@ -54,8 +54,8 @@ const Caracterizacion = () => {
             setID(newRowID);
             const rowData = {
                 ID: newRowID, // Update rowData with the new ID value
-                age: checkboxes.edad,
                 gender: checkboxes.genero,
+                age: checkboxes.edad,
                 email: checkboxes.email,
                 visionImpediment: checkboxes.visual,
                 condition: checkboxes.condicion
