@@ -40,23 +40,29 @@ const Home = () => {
                 <ul>
                 
                     <li>
-                        <input type="checkbox" id="item1" checked={checkboxes.item1}  onChange={handleCheckboxChange}>Entendí las instrucciones de la prueba que voy a realizar</input>
-
+                        <label>
+                            <input type="checkbox" id="item1" checked={checkboxes.item1} onChange={handleCheckboxChange} />
+                            Entendí las instrucciones de la prueba que voy a realizar
+                        </label>
                     </li>
                     <li>
-                        <input  type="checkbox" id="item2" checked={checkboxes.item2} onChange={handleCheckboxChange}>Acepto que la información dada por las respuestas sea usado con fines investigativos </input>
-                        
+                        <label>
+                            <input type="checkbox" id="item2" checked={checkboxes.item2} onChange={handleCheckboxChange} />
+                            Acepto que la información dada por las respuestas sea usado con fines investigativos
+                        </label>
                     </li>
                     <li>
-                        <input type="checkbox" id="item3" checked={checkboxes.item3} onChange={handleCheckboxChange}>Solo hare esta prueba una unica vez</input>
+                        <label>
+                            <input type="checkbox" id="item3" checked={checkboxes.item3} onChange={handleCheckboxChange} />
+                            Solo hare esta prueba una unica vez
+                        </label>
                     </li>
-
                     <li>
-                    
-
-                        <input type="checkbox" id="item3"checked={checkboxes.item3} onChange={handleCheckboxChange}>Declaro que estoy haciendo la prueba de forma voluntaria y que en cualquier momento puedo abandonarla.</input>
+                        <label>
+                            <input type="checkbox" id="item4" checked={checkboxes.item4} onChange={handleCheckboxChange} />
+                            Declaro que estoy haciendo la prueba de forma voluntaria y que en cualquier momento puedo abandonarla.
+                        </label>
                     </li>
-
                    
                 </ul>
                 </div>
