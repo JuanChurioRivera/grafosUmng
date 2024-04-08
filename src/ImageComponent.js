@@ -35,7 +35,7 @@ const ImageComponent = () => {
 
   useEffect(() => {
     console.log("check: ",checkUpdate)
-    if (primeraPalabra && segundaPalabra && terceraPalabra && checkUpdate) {
+    if (primeraPalabra && segundaPalabra && terceraPalabra) {
       const imagePath1 = `${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`;
       const imagePath2 = `${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`;
 
