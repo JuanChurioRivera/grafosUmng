@@ -35,6 +35,8 @@ const ImagePrueba = () => {
       const imagePath1 = `${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`;
       const imagePath2 = `${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`;
 
+      console.log(primeraPalabra,segundaPalabra);
+
       const img1 = new Image();
       const img2 = new Image();
 
@@ -52,17 +54,18 @@ const ImagePrueba = () => {
 
   return (
     <div className="image-container">
-      {showImage && (
-        <>
-          <div className="image-wrapper">
-            <img src={`${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 1" />
-          </div>
-          <div className="image-wrapper">
-            <img src={`${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 2" />
-          </div>
-        </>
-      )}
-    </div>
+    {showImage ? (
+      <>
+        <div className="image-wrapper">
+          <img src={`${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 1" />
+        </div>
+        <div className="image-wrapper">
+          <img src={`${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 2" />
+        </div>
+      </>
+    ) : null}
+  </div>
+
   );
 };
 
