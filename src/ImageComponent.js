@@ -8,11 +8,6 @@ const ImageComponent = () => {
   const navigate = useNavigate();
   const { data,checkUpdate,setcheckUpdate } = useCombinacion();
   const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-
-  
-
-  
 
 
   // Calcula las rutas de las imágenes en la carpeta public
@@ -24,6 +19,7 @@ const ImageComponent = () => {
 
   const navigateAfterDelay = () => {
     setTimeout(() => {
+      setcheckUpdate(false);
       navigate('/respuesta');
     }, 200);
   };
@@ -33,12 +29,14 @@ const ImageComponent = () => {
       const imagePath1 = `${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`;
       const imagePath2 = `${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`;
 
+      console.log(primeraPalabra,segundaPalabra);
+
       const img1 = new Image();
       const img2 = new Image();
 
       img1.onload = () => {
         img2.onload = () => {
-          setcheckUpdate(false);
+          setShowImage(true);
           navigateAfterDelay();
         };
         img2.src = imagePath2;
@@ -50,17 +48,18 @@ const ImageComponent = () => {
 
   return (
     <div className="image-container">
-      {showImage && (
-        <>
-          <div className="image-wrapper">
-            <img src={`${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 1" />
-          </div>
-          <div className="image-wrapper">
-            <img src={`${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 2" />
-          </div>
-        </>
-      )}
-    </div>
+    {showImage ? (
+      <>
+        <div className="image-wrapper">
+          <img src={`${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 1" />
+        </div>
+        <div className="image-wrapper">
+          <img src={`${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 2" />
+        </div>
+      </>
+    ) : null}
+  </div>
+
   );
 };
 
