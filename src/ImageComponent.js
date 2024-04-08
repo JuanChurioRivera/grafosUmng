@@ -56,17 +56,17 @@ const ImageComponent = () => {
 
   return (
     <div className="image-container">
-      {showImage && (
-        <>
-          <div className="image-wrapper">
-            <img src={`${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 1" />
-          </div>
-          <div className="image-wrapper">
-            <img src={`${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 2" />
-          </div>
-        </>
-      )}
-    </div>
+    {showImage ? (
+      <>
+        <div className="image-wrapper">
+          <img src={`${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 1" />
+        </div>
+        <div className="image-wrapper">
+          <img src={`${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 2" />
+        </div>
+      </>
+    ) : null}
+  </div>
   );
 };
 
