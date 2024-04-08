@@ -58,7 +58,7 @@ export const CombinacionProvider = ({ children }) => {
       if (currentPosition < parsedCSV.length) {
         const currentRow = parsedCSV[currentPositionPRUEBA];
         setDataPRUEBA(currentRow);
-        setcheckUpdate(True)
+        setcheckUpdate(true)
       }
     };
 
