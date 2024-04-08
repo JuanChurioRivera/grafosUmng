@@ -9,7 +9,7 @@ export const CombinacionProvider = ({ children }) => {
 
   const [dataPRUEBA, setDataPRUEBA] = useState([]);
   const [currentPositionPRUEBA, setCurrentPositionPRUEBA] = useState(0);
-
+  const [checkUpdate, setcheckUpdate] = useState([false]);
   const [data, setData] = useState([]);
   const [currentPosition, setCurrentPosition] = useState(0);
   const [ID, setID] = useState('');
@@ -18,10 +18,7 @@ export const CombinacionProvider = ({ children }) => {
   const [visionImpediment, setVisionImpediment] = useState('');
   const [parsedData, setParsedData] = useState([]);
 
-  // Function to generate new combination
-  const generarNuevaCombinacion = () => {
-    // Implementation of generating a new combination
-  };
+  
 
   // Function to check if all combinations are generated
  
@@ -61,6 +58,7 @@ export const CombinacionProvider = ({ children }) => {
       if (currentPosition < parsedCSV.length) {
         const currentRow = parsedCSV[currentPositionPRUEBA];
         setDataPRUEBA(currentRow);
+        setcheckUpdate(True)
       }
     };
 
@@ -73,7 +71,7 @@ export const CombinacionProvider = ({ children }) => {
 
   // Return the context provider with the values
   return (
-    <CombinacionContext.Provider value={{ currentPositionPRUEBA,setCurrentPositionPRUEBA,dataPRUEBA,setCurrentPosition,parsedData,data,currentPosition,setAge,age,setID,ID,setGender,gender,visionImpediment,setVisionImpediment }}>
+    <CombinacionContext.Provider value={{ checkUpdate,setcheckUpdate,currentPositionPRUEBA,setCurrentPositionPRUEBA,dataPRUEBA,setCurrentPosition,parsedData,data,currentPosition,setAge,age,setID,ID,setGender,gender,visionImpediment,setVisionImpediment }}>
       {children}
     </CombinacionContext.Provider>
   );
