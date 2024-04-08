@@ -4,9 +4,9 @@ import './assets/style.css';
 import { useCombinacion } from './CombinacionContext';
 
 const ImageComponent = () => {
-  const [showImage, setShowImage] = useState(true);
+  const [showImage, setShowImage] = useState(false);
   const navigate = useNavigate();
-  const { data } = useCombinacion();
+  const { data,checkUpdate,setcheckUpdate } = useCombinacion();
   const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
@@ -24,6 +24,7 @@ const ImageComponent = () => {
 
   const navigateAfterDelay = () => {
     setTimeout(() => {
+      setShowImage(true);
       navigate('/respuesta');
     }, 200);
   };
