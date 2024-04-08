@@ -10,21 +10,25 @@ const ImageComponent = () => {
   const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  
+  useEffect(() => {
+    const images = [];
+    const pngFileNames = ['BBB _GV.jpg', 'BBB _GVH.jpg', 'BBB _SIGNAL.jpg','CARDIOMYOPATHY_GV.jpg','CARDIOMYOPATHY_GVH.jpg','CARDIOMYOPATHY_SIGNAL.jpg','CONTROL_GV.jpg','CONTROL_GVH.jpg','CONTROL_SIGNAL.jpg','DISRHYTMIA_GV.jpg','DISRHYTMIA_GVH.jpg','DISRHYTMIA_SIGNAL.jpg','MYOCARDIAL INFARCTION _GV.jpg','MYOCARDIAL INFARCTION _GVH.jpg','MYOCARDIAL INFARCTION _SIGNAL.jpg'];
+
+    // Get all PNG files in the assets folder
+    pngFileNames.forEach((fileName) => {
+      const imagePath = `${process.env.PUBLIC_URL}/assets/${fileName}`;
+      const img = new Image();
+      img.src = imagePath;
+      images.push(imagePath); // Store the image path in the images array
+    });
+
+     // Show images after preloading
+  }, []);
 
   
-
-
-  // Calcula las rutas de las imágenes en la carpeta public
-  let imagePath1, imagePath2;
-  if (primeraPalabra && segundaPalabra && terceraPalabra) {
-    imagePath1 = `${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`;
-    imagePath2 = `${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`;
-  }
-
   const navigateAfterDelay = () => {
     setTimeout(() => {
-      setShowImage(true);
+    
       navigate('/respuesta');
     }, 200);
   };
@@ -39,6 +43,7 @@ const ImageComponent = () => {
 
       img1.onload = () => {
         img2.onload = () => {
+          setShowImage(true);
           navigateAfterDelay();
         };
         img2.src = imagePath2;
