@@ -34,10 +34,12 @@ const ImageComponent = () => {
   };
 
   useEffect(() => {
-    console.log("check: ",checkUpdate)
-    if (primeraPalabra && segundaPalabra && terceraPalabra) {
+    
+    if (primeraPalabra && segundaPalabra && terceraPalabra && checkUpdate) {
       const imagePath1 = `${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`;
       const imagePath2 = `${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`;
+
+      console.log(primeraPalabra,segundaPalabra);
 
       const img1 = new Image();
       const img2 = new Image();
