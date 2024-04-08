@@ -10,6 +10,7 @@ export const CombinacionProvider = ({ children }) => {
   const [dataPRUEBA, setDataPRUEBA] = useState([]);
   const [currentPositionPRUEBA, setCurrentPositionPRUEBA] = useState(0);
   const [checkUpdate, setcheckUpdate] = useState([false]);
+
   const [data, setData] = useState([]);
   const [currentPosition, setCurrentPosition] = useState(0);
   const [ID, setID] = useState('');

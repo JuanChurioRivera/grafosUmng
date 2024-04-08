@@ -6,7 +6,7 @@ import { useCombinacion } from './CombinacionContext';
 const ImageComponent = () => {
   const [showImage, setShowImage] = useState(true);
   const navigate = useNavigate();
-  const { data } = useCombinacion();
+  const { data,checkUpdate,setcheckUpdate } = useCombinacion();
   const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
@@ -29,7 +29,7 @@ const ImageComponent = () => {
   };
 
   useEffect(() => {
-    if (primeraPalabra && segundaPalabra && terceraPalabra) {
+    if (primeraPalabra && segundaPalabra && terceraPalabra && checkUpdate) {
       const imagePath1 = `${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`;
       const imagePath2 = `${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`;
 
@@ -38,6 +38,7 @@ const ImageComponent = () => {
 
       img1.onload = () => {
         img2.onload = () => {
+          setcheckUpdate(false);
           navigateAfterDelay();
         };
         img2.src = imagePath2;
