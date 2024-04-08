@@ -4,10 +4,16 @@ import './assets/style.css';
 import { useCombinacion } from './CombinacionContext';
 
 const ImageComponent = () => {
-  const [showImage, setShowImage] = useState(false);
+  const [showImage, setShowImage] = useState(true);
   const navigate = useNavigate();
-  const { data, checkUpdate, setcheckUpdate } = useCombinacion();
+  const { data } = useCombinacion();
   const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  
+
+  
+
 
   // Calcula las rutas de las imágenes en la carpeta public
   let imagePath1, imagePath2;
@@ -18,13 +24,12 @@ const ImageComponent = () => {
 
   const navigateAfterDelay = () => {
     setTimeout(() => {
-      setcheckUpdate(false);
       navigate('/respuesta');
     }, 200);
   };
 
   useEffect(() => {
-    if (primeraPalabra && segundaPalabra && terceraPalabra && checkUpdate) {
+    if (primeraPalabra && segundaPalabra && terceraPalabra) {
       const imagePath1 = `${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`;
       const imagePath2 = `${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`;
 
@@ -33,20 +38,18 @@ const ImageComponent = () => {
 
       img1.onload = () => {
         img2.onload = () => {
-          setShowImage(true);
           navigateAfterDelay();
         };
-
         img2.src = imagePath2;
       };
 
       img1.src = imagePath1;
     }
-  }, [primeraPalabra, segundaPalabra, terceraPalabra, checkUpdate, navigate, navigateAfterDelay]);
+  }, [primeraPalabra, segundaPalabra, terceraPalabra, navigateAfterDelay]);
 
   return (
     <div className="image-container">
-      {showImage ? (
+      {showImage && (
         <>
           <div className="image-wrapper">
             <img src={`${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 1" />
@@ -55,7 +58,7 @@ const ImageComponent = () => {
             <img src={`${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 2" />
           </div>
         </>
-      ) : null}
+      )}
     </div>
   );
 };
