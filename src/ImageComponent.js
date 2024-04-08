@@ -28,13 +28,14 @@ const ImageComponent = () => {
   
   const navigateAfterDelay = () => {
     setTimeout(() => {
-    
+      setcheckUpdate(false);
       navigate('/respuesta');
     }, 200);
   };
 
   useEffect(() => {
-    if (primeraPalabra && segundaPalabra && terceraPalabra) {
+    console.log("check: ",checkUpdate)
+    if (primeraPalabra && segundaPalabra && terceraPalabra && checkUpdate) {
       const imagePath1 = `${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`;
       const imagePath2 = `${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`;
 
