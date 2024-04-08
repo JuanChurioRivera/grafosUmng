@@ -6,14 +6,8 @@ import { useCombinacion } from './CombinacionContext';
 const ImageComponent = () => {
   const [showImage, setShowImage] = useState(false);
   const navigate = useNavigate();
-  const { data,checkUpdate,setcheckUpdate } = useCombinacion();
+  const { data, checkUpdate, setcheckUpdate } = useCombinacion();
   const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-
-  
-
-  
-
 
   // Calcula las rutas de las imágenes en la carpeta public
   let imagePath1, imagePath2;
@@ -30,7 +24,7 @@ const ImageComponent = () => {
   };
 
   useEffect(() => {
-    if (primeraPalabra && segundaPalabra && terceraPalabra&&checkUpdate) {
+    if (primeraPalabra && segundaPalabra && terceraPalabra && checkUpdate) {
       const imagePath1 = `${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`;
       const imagePath2 = `${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`;
 
@@ -48,21 +42,21 @@ const ImageComponent = () => {
 
       img1.src = imagePath1;
     }
-  }, [primeraPalabra, segundaPalabra, terceraPalabra, navigateAfterDelay]);
+  }, [primeraPalabra, segundaPalabra, terceraPalabra, checkUpdate, navigate, navigateAfterDelay]);
 
   return (
     <div className="image-container">
-    {showImage ? (
-      <>
-        <div className="image-wrapper">
-          <img src={`${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 1" />
-        </div>
-        <div className="image-wrapper">
-          <img src={`${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 2" />
-        </div>
-      </>
-    ) : null}
-  </div>
+      {showImage ? (
+        <>
+          <div className="image-wrapper">
+            <img src={`${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 1" />
+          </div>
+          <div className="image-wrapper">
+            <img src={`${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 2" />
+          </div>
+        </>
+      ) : null}
+    </div>
   );
 };
 
