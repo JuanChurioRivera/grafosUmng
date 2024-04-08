@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './assets/style.css';
 import { useCombinacion } from './CombinacionContext';
 
-const ImagePrueba = () => {
+const ImageComponent = () => {
   const [showImage, setShowImage] = useState(false); // Initially hide images
   const navigate = useNavigate();
   const { data,checkUpdate,setcheckUpdate } = useCombinacion();
@@ -70,4 +70,4 @@ const ImagePrueba = () => {
   );
 };
 
-export default ImagePrueba;
+export default ImageComponent;
