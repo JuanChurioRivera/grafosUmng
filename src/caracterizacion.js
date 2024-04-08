@@ -96,17 +96,23 @@ const Caracterizacion = () => {
                 <label htmlFor="edad">Ingrese su edad:</label>
                 <input type="text" id="edad" name="edad" placeholder="Escribe tu edad" onChange={handleInputChange} />
 
+                <br></br>
+
                 <label>Selecciona tu género:</label>
                 <input type="radio" id="genero" name="genero" value="Masculino" onChange={handleInputChange} /> Masculino
                 <input type="radio" id="genero" name="genero" value="Femenino" onChange={handleInputChange} /> Femenino
                 <input type="radio" id="genero" name="genero" value="Otro" onChange={handleInputChange} /> Otro
+                <br></br>
 
                 <label htmlFor="email">Correo electrónico (El correo electrónico sólo se usará para el registro):</label>
                 <input type="email" id="email" name="email" pattern=".+@example\.com" size="30" required onChange={handleInputChange} />
+                <br></br>
 
                 <label>Padece de alguna enfermedad visual:</label>
                 <input type="radio" id="visual" name="visual" value="Sí" onChange={handleInputChange} /> Si
                 <input type="radio" id="visual" name="visual" value="No" onChange={handleInputChange} /> No
+
+                <br></br>
 
                 <label htmlFor="condicion">En caso de haber respondido Sí en la anterior pregunta, seleccione la condición que mejor lo describe</label>
                 <select name="condicion" id="condicion" onChange={handleInputChange}>
@@ -116,8 +122,12 @@ const Caracterizacion = () => {
                     <option value="astigmatismo">Astigmatismo</option>
                     <option value="miopia-astigmatismo">Miopía-Astigmatismo</option>
                     <option value="hipermetropia-astigmatismo">Hipermetropía-Astigmatismo</option>
+                    <option value="hipermetropia-astigmatismo">Miopía-Otro</option>
+                    <option value="hipermetropia-astigmatismo">Astigmatismo-Otro</option>
                     <option value="otro">Otro</option>
                 </select>
+
+                <br></br>
 
                 <button type="submit" onClick={handleClick}>Empezar Prueba</button>
             </form>
