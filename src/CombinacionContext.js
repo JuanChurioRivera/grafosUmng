@@ -37,6 +37,7 @@ export const CombinacionProvider = ({ children }) => {
       if (currentPosition < parsedCSV.length) {
         const currentRow = parsedCSV[currentPosition];
         setData(currentRow);
+        setcheckUpdate(true);
       }
     };
 
@@ -59,7 +60,7 @@ export const CombinacionProvider = ({ children }) => {
       if (currentPosition < parsedCSV.length) {
         const currentRow = parsedCSV[currentPositionPRUEBA];
         setDataPRUEBA(currentRow);
-        setcheckUpdate(true)
+        setcheckUpdate(true);
       }
     };
 
