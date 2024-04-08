@@ -4,7 +4,7 @@ import './assets/style.css';
 import { useCombinacion } from './CombinacionContext';
 
 const ImageComponent = () => {
-  const [showImage, setShowImage] = useState(true);
+  const [showImage, setShowImage] = useState(false);
   const navigate = useNavigate();
   const { data,checkUpdate,setcheckUpdate } = useCombinacion();
   const [primeraPalabra, segundaPalabra, terceraPalabra] = data;
@@ -52,17 +52,17 @@ const ImageComponent = () => {
 
   return (
     <div className="image-container">
-      {showImage && (
-        <>
-          <div className="image-wrapper">
-            <img src={`${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 1" />
-          </div>
-          <div className="image-wrapper">
-            <img src={`${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 2" />
-          </div>
-        </>
-      )}
-    </div>
+    {showImage ? (
+      <>
+        <div className="image-wrapper">
+          <img src={`${process.env.PUBLIC_URL}/assets/${primeraPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 1" />
+        </div>
+        <div className="image-wrapper">
+          <img src={`${process.env.PUBLIC_URL}/assets/${segundaPalabra}_${terceraPalabra}.jpg`} alt="Gráfico 2" />
+        </div>
+      </>
+    ) : null}
+  </div>
   );
 };
 
