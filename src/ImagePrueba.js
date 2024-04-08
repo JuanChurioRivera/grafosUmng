@@ -21,7 +21,7 @@ const ImagePrueba = () => {
       images.push(imagePath); // Store the image path in the images array
     });
 
-    setShowImage(true); // Show images after preloading
+     // Show images after preloading
   }, []);
 
   const navigateAfterDelay = () => {
@@ -40,6 +40,7 @@ const ImagePrueba = () => {
 
       img1.onload = () => {
         img2.onload = () => {
+          setShowImage(true);
           navigateAfterDelay();
         };
         img2.src = imagePath2;

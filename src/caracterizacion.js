@@ -123,7 +123,9 @@ const Caracterizacion = () => {
                     <option value="miopia-astigmatismo">Miopía-Astigmatismo</option>
                     <option value="hipermetropia-astigmatismo">Hipermetropía-Astigmatismo</option>
                     <option value="hipermetropia-astigmatismo">Miopía-Otro</option>
+                    <option value="hipermetropia-astigmatismo">Hipermetropía-Otro</option>
                     <option value="hipermetropia-astigmatismo">Astigmatismo-Otro</option>
+
                     <option value="otro">Otro</option>
                 </select>
 
